@@ -1,7 +1,10 @@
 header{
-    margin-top: 10px;
+    margin: 15px 10% 0 10%;
     display: flex;
-    justify-content: center;    
+    justify-content: space-evenly; 
+    img{
+        width: clamp(100px, 20%, 200px);
+    }
 }
 .impContainer{
     margin: 0 10% 0 10%;
