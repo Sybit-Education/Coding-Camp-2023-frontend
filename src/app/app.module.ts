@@ -13,6 +13,7 @@ import {APP_ROUTES} from "./misc/app.routes";
 import {StoreModule} from "@ngrx/store";
 import {sygotchiReducer} from "./store/sygotchi.reducer";
 import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
+import { ImpressumComponent } from './impressum/impressum.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
     AuthPageComponent,
     CreationPageComponent,
     DsgvoPageComponent
+    ImpressumComponent
   ],
   imports: [
     BrowserModule,
