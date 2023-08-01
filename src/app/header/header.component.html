@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-ng navbar-light bg-light">  
+    <div class="container-fluid">
+        <a>
+            <img alt="Sygotchi-logo" class="logo" src="assets/images/sygotchi-logo.png">
+        </a>
+        <ul class="navbar-nav ms-auto flex-row justify-content-between">
+            <div ngbDropdown class="d-inline-blog" display="dynamic"> 
+                <a type="butoon" class="d-flex align-items-center nav-link" id="dropdownConfig" ngbDropdownToggle>
+                    Sonstige
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdownConfig">
+                    <a ngbDropdownItem router-link="/impressum">
+                        <i class="fa-solid fa-stamp"></i>
+                        <span>Impressum</span>
+                    </a>
+                    <a ngbDropdownItem router-link="/dsgvo">
+                        <i class="fa-solid fa-server"></i>
+                        <span>Datenschutz</span>
+                    </a>
+                </div>
+            </div>
+        </ul>
+    </div>
+</nav>

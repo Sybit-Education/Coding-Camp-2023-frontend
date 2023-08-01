@@ -14,6 +14,7 @@ import {StoreModule} from "@ngrx/store";
 import {sygotchiReducer} from "./store/sygotchi.reducer";
 import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
 import { ImpressumComponent } from './impressum/impressum.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ImpressumComponent } from './impressum/impressum.component';
     AuthPageComponent,
     CreationPageComponent,
     DsgvoPageComponent,
-    ImpressumComponent
+    ImpressumComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
