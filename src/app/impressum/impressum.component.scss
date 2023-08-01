@@ -1,0 +1,38 @@
+header{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;    
+}
+.impContainer{
+    margin: 0 10% 0 10%;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    h4, h3{
+        grid-column: 1;
+    }
+    p, a, address{
+        grid-column: 2;
+    }
+}
+h4,p,a,address{
+    margin: 0;
+}
+h4{
+    font-size: 1.2rem;
+}
+h3{
+    margin-top: 20px;
+}
+@media screen and (max-width: 490px) {
+    .impContainer{
+        display: grid;
+        grid-template-columns: 1fr;
+        h4, h3{
+            grid-column: 1;
+        }
+        p, a, address{
+            grid-column: 1;
+        }
+    }
+}
