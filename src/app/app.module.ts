@@ -20,7 +20,7 @@ import { ImpressumComponent } from './impressum/impressum.component';
     AppComponent,
     AuthPageComponent,
     CreationPageComponent,
-    DsgvoPageComponent
+    DsgvoPageComponent,
     ImpressumComponent
   ],
   imports: [
