@@ -12,12 +12,14 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {APP_ROUTES} from "./misc/app.routes";
 import {StoreModule} from "@ngrx/store";
 import {sygotchiReducer} from "./store/sygotchi.reducer";
+import { LogoComponent } from './logo/logo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthPageComponent,
-    CreationPageComponent
+    CreationPageComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,
