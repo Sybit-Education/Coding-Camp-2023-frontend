@@ -12,6 +12,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {APP_ROUTES} from "./misc/app.routes";
 import {StoreModule} from "@ngrx/store";
 import {sygotchiReducer} from "./store/sygotchi.reducer";
+import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ImpressumComponent } from './impressum/impressum.component';
     AppComponent,
     AuthPageComponent,
     CreationPageComponent,
+    DsgvoPageComponent
     ImpressumComponent
   ],
   imports: [

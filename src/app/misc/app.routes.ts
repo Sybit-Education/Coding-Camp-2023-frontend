@@ -9,5 +9,6 @@ export const APP_ROUTES: Routes = [
   {path: 'auth', component: AuthPageComponent},
   {path: 'impressum', component: ImpressumComponent},
   {path: 'creation', component: CreationPageComponent, canActivate: [AuthGuard]},
+  {path: 'dsgvo', component: DsgvoPageComponent}
   {path: '**', redirectTo: 'auth'}
 ]
