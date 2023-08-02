@@ -17,6 +17,7 @@ import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstellen.component';
 import { HeaderComponent } from './header/header.component';
+import { SygotchiCleanComponent } from './sygotchi-clean/sygotchi-clean.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HeaderComponent } from './header/header.component';
     ImpressumComponent,
     SygotchiErstellenComponent,
     ImpressumComponent,
-    HeaderComponent
+    HeaderComponent,
+    SygotchiCleanComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,51 @@
+.container_all{
+    display:grid; 
+    grid-template-columns: 1fr 2fr;
+    margin: 0;
+    padding: 0;
+    main{
+        background-image: url("../../assets/images/BathroomBackground.jpeg");
+        background-size: 100% 100%;
+        background-repeat:no-repeat;
+        background-position: 0% 0%;
+        height: 91.21vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    aside{
+        padding: 30px;
+        background-color: #EFD3D2;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+       .color-container{
+            display:flex;
+            justify-content: space-evenly;
+       }
+       .btn{
+        border: 0;
+            .material-symbols-outlined{
+                font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48;
+                font-size: 15rem;
+            }
+       } 
+    }
+}
+@media screen and (max-width: 630px) {
+    .container_all{
+        grid-template-columns: 1fr;
+        main{
+            grid-row: 1;
+        }
+        aside{
+            grid-row: 2;
+        }
+    }
+    
+}
