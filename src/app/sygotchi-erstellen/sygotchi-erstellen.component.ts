@@ -7,6 +7,7 @@ import {Store} from "@ngrx/store";
 import {setSygotchi} from "../store/sygotchi.actions";
 import {ActionsService} from "../services/actions.service";
 import {WebsocketService} from "../services/websocket.service";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class SygotchiErstellenComponent implements OnInit{
   shape: any;
   shapePath: any;
 
-  constructor(private formBuilder: FormBuilder, private store: Store, private actionsService: ActionsService, private wsService: WebsocketService){
+  constructor(private formBuilder: FormBuilder, private store: Store, private actionsService: ActionsService, private wsService: WebsocketService, private router: Router){
     this.characterForm = this.formBuilder.group({
       name: ['',Validators.required],
       shape: ['RECTANGLE',Validators.required],
@@ -140,11 +141,10 @@ export class SygotchiErstellenComponent implements OnInit{
     }
 
     this.actionsService.createSygotchi(characterData.name, eye, characterData.shape, characterData.color, characterData.height, characterData.width).subscribe(result => {
-
       this.store.dispatch(setSygotchi({sygotchi: result as any}))
       this.wsService.initializeWebSocketConnection(result.id)
 
-      // TODO: Routing
+      this.router.navigate(['/sleep']);
     })
   }
 }

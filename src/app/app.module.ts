@@ -15,9 +15,11 @@ import { LogoComponent } from './logo/logo.component';
 import { TeamSComponent } from './team-s/team-s.component';
 import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
 import { ImpressumComponent } from './impressum/impressum.component';
+import { NeedsComponent } from './needs/needs.component';
 import { ShowSygotchiComponent } from './show-sygotchi/show-sygotchi.component';
 import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstellen.component';
 import { HeaderComponent } from './header/header.component';
+import { SygotchiCleanComponent } from './sygotchi-clean/sygotchi-clean.component';
 import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
 
 @NgModule({
@@ -29,11 +31,11 @@ import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
     DsgvoPageComponent,
     ImpressumComponent,
     ShowSygotchiComponent,
-    ImpressumComponent,
     SygotchiErstellenComponent,
-    ImpressumComponent,
     HeaderComponent,
-    SleepSceneComponent
+    SleepSceneComponent,
+    NeedsComponent,
+    SygotchiCleanComponent
   ],
   imports: [
     BrowserModule,
