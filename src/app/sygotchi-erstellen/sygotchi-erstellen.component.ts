@@ -141,7 +141,6 @@ export class SygotchiErstellenComponent implements OnInit{
     }
 
     this.actionsService.createSygotchi(characterData.name, eye, characterData.shape, characterData.color, characterData.height, characterData.width).subscribe(result => {
-
       this.store.dispatch(setSygotchi({sygotchi: result as any}))
       this.wsService.initializeWebSocketConnection(result.id)
 

@@ -19,6 +19,7 @@ import { NeedsComponent } from './needs/needs.component';
 import { ShowSygotchiComponent } from './show-sygotchi/show-sygotchi.component';
 import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstellen.component';
 import { HeaderComponent } from './header/header.component';
+import { SygotchiCleanComponent } from './sygotchi-clean/sygotchi-clean.component';
 import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
 import { FooterComponent } from './footer/footer.component';
 
@@ -29,12 +30,13 @@ import { FooterComponent } from './footer/footer.component';
     LogoComponent,
     TeamSComponent,
     DsgvoPageComponent,
+    ImpressumComponent,
     ShowSygotchiComponent,
     SygotchiErstellenComponent,
     HeaderComponent,
     SleepSceneComponent,
-    ImpressumComponent,
     NeedsComponent,
+    SygotchiCleanComponent,
     FooterComponent
   ],
   imports: [
