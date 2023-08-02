@@ -10,8 +10,7 @@ import {environment} from "../../environments/environment";
 export class ActionsService {
   apiUrl = environment.apiUrl
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getAccountInfo() {
     const id = localStorage.getItem('id')
@@ -21,5 +20,8 @@ export class ActionsService {
 
   getSygotchi(): Observable<SyGotchi> {
     return this.http.get<SyGotchi>(`${this.apiUrl}/tamagotchi`)
+
+  createSygotchi(name, eyes, shape, color, height, width): Observable<SyGotchi> {
+    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi`, { name, eyes, shape, color, height, width })
   }
 }
