@@ -1,1 +1,58 @@
-<p>auth-page works!</p>
+<div class="container"> 
+    <div class="row justify-content-center">
+        <div class="col-sm-8 col-md-6 col-lg-4">
+            <div class="auth-form">
+                <app-logo class="logo"></app-logo>
+                <div class="form-content">
+                    <form [formGroup]="authForm">
+                        <div class="form-group">
+                            <label for="username">Benutzername: </label>
+                            <input id="username" type="text" class="form-control" formControlName="username" pattern="[A-Za-z0-9-_]{3,}">
+                        </div>
+                        <div class="form-group pw-field">
+                            <label for="password">Passwort: </label>
+                            <input id="password" type="password" class="form-control" minlength="8" formControlName="password">
+                        </div>
+                        <div *ngIf="isRegistration" class="form-group pw-field">
+                            <label for="confirmPassword">Passwort wiederholen: </label>
+                            <input id="confirmPassword" type="password" minlength="8" class="form-control" formControlName="confirmPassword">
+                        </div>      
+                    </form>
+                    
+                    <div *ngIf="isRegistration; else isLogin" class="text-center">
+                        <p class="password-error-message" *ngIf="showError">{{ errorMessage }}</p>
+                        <button (click)="register()" class="btn btn-primary submit-button" [disabled]="authForm.invalid">Account erstellen</button>
+                        <div class="change">
+                            <p>Du hast schon einen Sygotchi-Account?
+                                <button (click)="changeView()" class="btn btn-link">Zurück zum Login</button>        
+                            </p>
+                            <a style="margin-right: 5px;" routerLink="/impressum">
+                                <span>Impressum</span>
+                            </a>
+                            <a style="margin-right: 5px;" routerLink="/dsgvo">
+                                <span>Datenschutz</span>
+                            </a>       
+                        </div>
+                    </div>
+                    <ng-template #isLogin>
+                        <div class="text-center">
+                           <p class="password-error-message" *ngIf="showError">{{ errorMessage }}</p> 
+                           <button (click)="login()" class="btn btn-primary submit-button">Login</button>
+                           <div class="change">
+                            <p>Noch keinen Sygotchi-Account?
+                                <button (click)="changeView()" class="btn btn-link">Account erstellen</button>
+                            </p>
+                            <a style="margin-right: 5px;" routerLink="/impressum">
+                                <span>Impressum</span>
+                            </a>
+                            <a style="margin-right: 5px;" routerLink="/dsgvo">
+                                <span>Datenschutz</span>
+                            </a>       
+                           </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

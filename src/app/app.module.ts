@@ -12,18 +12,30 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {APP_ROUTES} from "./misc/app.routes";
 import {StoreModule} from "@ngrx/store";
 import {sygotchiReducer} from "./store/sygotchi.reducer";
+import { LogoComponent } from './logo/logo.component';
 import { TeamSComponent } from './team-s/team-s.component';
 import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { NeedsComponent } from './needs/needs.component';
+import { ShowSygotchiComponent } from './show-sygotchi/show-sygotchi.component';
+import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstellen.component';
+import { HeaderComponent } from './header/header.component';
+import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthPageComponent,
-    CreationPageComponent,
+    LogoComponent,
     TeamSComponent,
     DsgvoPageComponent,
+    ImpressumComponent,
+    ShowSygotchiComponent,
+    ImpressumComponent,
+    SygotchiErstellenComponent,
+    ImpressumComponent,
+    HeaderComponent,
+    SleepSceneComponent
     ImpressumComponent,
     NeedsComponent
   ],

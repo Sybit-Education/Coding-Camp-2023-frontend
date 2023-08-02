@@ -57,4 +57,16 @@ export class ActionsService {
   getRanking(): Observable<SyGotchi> {
     return this.http.get<SyGotchi>(`${this.apiUrl}/tamagotchi/highscore`)
   }
+  getSygotchi(): Observable<SyGotchi> {
+    return this.http.get<SyGotchi>(`${this.apiUrl}/tamagotchi`)
+  }
+
+   sleep(): Observable<SyGotchi> {
+    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/sleep`, null)
+  }
+
+  wakeUp(): Observable<SyGotchi> {
+    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/wakeUp`, null)
+  }
+
 }
