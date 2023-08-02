@@ -68,7 +68,7 @@ export class NeedsComponent {
       case Mood.BORED:
         this.mood = 'fa-face-rolling-eyes'
         break;
-      default: this.mood = 'fa-face-meh'
+      default: this.mood = 'fa-face-smile'
     }
   }
 }
