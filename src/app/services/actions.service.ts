@@ -21,11 +21,11 @@ export class ActionsService {
   }
 
    sleep(): Observable<SyGotchi> {
-    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi`, null)
-  } 
+    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/sleep`, null)
+  }
 
   wakeUp(): Observable<SyGotchi> {
-    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi`, null)
+    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/wakeUp`, null)
   }
 
 }

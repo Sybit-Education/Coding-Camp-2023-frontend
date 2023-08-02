@@ -1,9 +1,1 @@
 <canvas id="canvas"></canvas>
-<button (click)="onSleep()" class="btn btn-primary">
-    <div *ngIf="isAsleep;else other_content">
-        <span>Aufwachen</span>
-    </div>
-    <ng-template #other_content>
-        <span>Schlafen</span>
-    </ng-template>
-</button>

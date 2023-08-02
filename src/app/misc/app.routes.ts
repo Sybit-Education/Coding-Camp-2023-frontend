@@ -5,7 +5,7 @@ import { SygotchiErstellenComponent } from "../sygotchi-erstellen/sygotchi-erste
 import { TeamSComponent } from "../team-s/team-s.component";
 import { DsgvoPageComponent } from "../dsgvo-page/dsgvo-page.component";
 import { ImpressumComponent } from "../impressum/impressum.component";
-import { ShowSygotchiComponent } from "../show-sygotchi/show-sygotchi.component";
+import {SleepSceneComponent} from "../sleep-scene/sleep-scene.component";
 
 export const APP_ROUTES: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -14,7 +14,6 @@ export const APP_ROUTES: Routes = [
   {path: 'team-site', component: TeamSComponent},
   {path: 'dsgvo', component: DsgvoPageComponent},
   {path: 'impressum', component: ImpressumComponent },
-  {path: 'sygotchi', component: ShowSygotchiComponent, canActivate: [AuthGuard]},
+  {path: 'sleep', component: SleepSceneComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: 'auth' }
-  
 ]

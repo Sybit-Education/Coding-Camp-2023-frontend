@@ -7,6 +7,7 @@ import { Project } from "paper";
 import { WebsocketService } from '../services/websocket.service';
 import { selectSygotchi } from '../store/sygotchi.selectors';
 import { setSygotchi } from '../store/sygotchi.actions';
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-show-sygotchi',
@@ -18,10 +19,9 @@ export class ShowSygotchiComponent implements OnInit {
   canvas: any
   shapePath: any
   shape: any
-  isAsleep: boolean = false
 
   constructor(private actionsService: ActionsService, private store: Store, private wsService: WebsocketService) { }
-  
+
   ngOnInit(): void {
     window['paper'] = paper;
     new Project('canvas');
@@ -36,18 +36,17 @@ export class ShowSygotchiComponent implements OnInit {
         if (this.sygotchi === null) {
           this.actionsService.getSygotchi().subscribe(result => {
             this.sygotchi = result
-            this.store.dispach(setSygotchi({ sygotchi: result as SyGotchi }))
+            this.store.dispatch(setSygotchi({ sygotchi: result as SyGotchi }))
             this.buildSygotchi()
           })
+        } else {
+          this.wsService.initializeWebSocketConnection(this.sygotchi.id)
+          this.buildSygotchi()
         }
-        
-
-        this.buildSygotchi()
-        this.getSleepStatus()
       })
     })
   }
-      
+
 
   buildSygotchi() {
     const shapeType = this.sygotchi.shape;
@@ -124,23 +123,5 @@ export class ShowSygotchiComponent implements OnInit {
       children: [this.shape, eyeLeft, eyeRight, pupilRight, pupilLeft]
     })
     this.canvas.addChild(this.shapePath);
-  }
-
-  onSleep() {
-    if (this.isAsleep) {
-      this.isAsleep = false
-      this.actonsService.sleep().subscribe(sygotchi => {
-        this.sygotchi = sygotchi
-      })
-    } else {
-      this.isAsleep = true
-      this.actonsService.wakeUp().subscribe(sygotchi => {
-        this.sygotchi = sygotchi
-      })
-    }
-  }
-
-  getSleepStatus() {
-    
   }
 }
