@@ -31,7 +31,16 @@ export class AuthPageComponent implements OnInit {
   }
 
   register() {
-    if(this.authForm.value.password === this.authForm.get('confirmPassword')?.value) {
+    if (!this.authForm.value.username.match(/^[A-Za-z0-9-_]{3,}$/gm)) {
+      this.errorMessage = 'Benutzername darf nur Buchstaben, Zahlen und Bindestriche sowie Unterstriche enthalten.'
+      this.showError = true;
+    } else if (this.authForm.value.password.length < 8) {
+      this.errorMessage = 'Passwort muss mindestens 8 Buchstaben enthalten.'
+      this.showError = true;
+    } else if (this.authForm.value.password !== this.authForm.get('confirmPassword')?.value) {
+      this.errorMessage = 'Passwörter stimmen nicht überein.'
+      this.showError = true;
+    } else {
       this.authService.register(this.authForm.value.username, this.authForm.value.password).subscribe(
         result => {
           localStorage.setItem('token', result["token"])
@@ -49,9 +58,6 @@ export class AuthPageComponent implements OnInit {
           this.showError = true;
         }
       );
-    } else {
-    this.errorMessage = 'Passwörter stimmen nicht überein.'
-    this.showError = true;
     }
   }
 
