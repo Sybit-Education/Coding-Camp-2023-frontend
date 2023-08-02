@@ -46,7 +46,7 @@ export class AuthPageComponent implements OnInit {
           this.errorMessage = 'Unerwarteter Fehler'
           this.showError = true;
         }
-      } 
+      }
       );
     } else {
     this.errorMessage = 'Passwörter stimmen nicht überein.'
@@ -60,14 +60,15 @@ export class AuthPageComponent implements OnInit {
       result => {
         localStorage.setItem('token', result["token"])
         localStorage.setItem('id', result["id"]),
-      
-        this.actionsService.getSyGotchi().subscribe(result =>{
-          this.store.dispatch(setSygotchi({sygotchi:result as SyGotchi}))
-          this.wsService.initializeWebSocketConnection(result.id)
-        });
+
+          this.actionsService.getSygotchi().subscribe(result => {
+              this.store.dispatch(setSygotchi({sygotchi: result as SyGotchi}))
+
+              this.wsService.initializeWebSocketConnection(result.id)
+          },
         () => {
           this.router.navigate(['/creation'])
-        }
+        })
       },
       err => {
         if (err.status === HttpStatusCode.BadRequest) {

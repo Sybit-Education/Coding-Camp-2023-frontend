@@ -1,24 +1,25 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { environment } from "src/environments/environment";
-import { SyGotchi } from "../entities/syGotchi";
-import { setSygotchi } from "../store/sygotchi.actions";
+import { Injectable } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {SyGotchi} from "../entities/syGotchi";
+import {environment} from "../../environments/environment";
 
 @Injectable({
-    providedIn:'root'
+  providedIn: 'root'
 })
-export class ActionsService{
-    apiUrl=environment.apiUrl
+export class ActionsService {
+  apiUrl = environment.apiUrl
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-    getAccountInfo {
-        const id= localStorage.getItem('id')
-        return this.http.get('${this.apiUrl}/user/${id}')
-    }
+  getAccountInfo() {
+    const id = localStorage.getItem('id')
 
-    getSygotchi(): Observable<SyGotchi> {
-        return.this.http.get<Sygotchi>('$({this.apiUrl}/tamagotchi')
-    }
+    return this.http.get(`${this.apiUrl}/user/${id}`)
+  }
+
+  getSygotchi(): Observable<SyGotchi> {
+    return this.http.get<SyGotchi>(`${this.apiUrl}/tamagotchi`)
+  }
 }
