@@ -34,7 +34,7 @@ import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
     SygotchiErstellenComponent,
     ImpressumComponent,
     HeaderComponent,
-    SleepSceneComponent
+    SleepSceneComponent,
     HeaderComponent,
     SygotchiCleanComponent
   ],
