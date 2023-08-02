@@ -13,7 +13,7 @@ export const APP_ROUTES: Routes = [
   {path: 'create', component: SygotchiErstellenComponent, canActivate: [AuthGuard]},
   {path: 'team-site', component: TeamSComponent},
   {path: 'dsgvo', component: DsgvoPageComponent},
-  {path: 'impressum', component: ImpressumComponent },
+  {path: 'impressum', component: ImpressumComponent},
   {path: 'sleep', component: SleepSceneComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: 'auth' }
 ]
