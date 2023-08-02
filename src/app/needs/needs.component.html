@@ -7,33 +7,28 @@
       <div class="row">
         <div class="col-12 mb-3" *ngFor="let need of needs">
           <div class="row align-items-center">
-          <div class="col-2 text-center">
+            <div class="col-2 text-center">
               <i *ngIf="need.icon" [ngClass]="need.icon"></i>
-          </div>
-          <div class="col-10">
-            <label class="mt-2">{{need.label}}</label>
-            <div class="progress w-100 mt-2">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                [style.width.%]="need.progress"
-                [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
+            </div>
+            <div class="col-10">
+                <label class="mt-2">{{need.label}}</label>
+              <div class="progress w-100 mt-2">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  [style.width.%]="need.progress"
+                  [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
+    <label>Stimmung:
+      <i class="fa-regular fa-lg" [ngClass]="mood">
 
+      </i>
+    </label>
   </div>
-  <label>Stimmung
-    <i class="fa-regular fa-lg" [ngClass]="mood">
-
-    </i>
-  </label>
-
-
-</div>
 </ng-template>
-
 <button class="btn btn-primary" (click)="open(content)">Bedürfnisse</button>
