@@ -22,7 +22,7 @@ import { ImpressumComponent } from './impressum/impressum.component';
     AppComponent,
     AuthPageComponent,
     CreationPageComponent,
-    LogoComponent
+    LogoComponent,
     CreationPageComponent,
     TeamSComponent,
     DsgvoPageComponent,
