@@ -1,0 +1,9 @@
+<app-show-sygotchi></app-show-sygotchi>
+<button (click)="onSleep()" class="btn btn-primary">
+  <div *ngIf="isAsleep;else goSleep">
+    <span>Aufwachen</span>
+  </div>
+  <ng-template #goSleep>
+    <span>Schlafen</span>
+  </ng-template>
+</button>
