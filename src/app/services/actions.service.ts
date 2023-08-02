@@ -19,4 +19,13 @@ export class ActionsService {
   getSygotchi(): Observable<SyGotchi> {
     return this.http.get<SyGotchi>(`${this.apiUrl}/tamagotchi`)
   }
+
+   sleep(): Observable<SyGotchi> {
+    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi`, null)
+  } 
+
+  wakeUp(): Observable<SyGotchi> {
+    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi`, null)
+  }
+
 }

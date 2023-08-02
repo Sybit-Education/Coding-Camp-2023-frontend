@@ -18,6 +18,7 @@ import { ImpressumComponent } from './impressum/impressum.component';
 import { ShowSygotchiComponent } from './show-sygotchi/show-sygotchi.component';
 import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstellen.component';
 import { HeaderComponent } from './header/header.component';
+import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HeaderComponent } from './header/header.component';
     ImpressumComponent,
     SygotchiErstellenComponent,
     ImpressumComponent,
-    HeaderComponent
+    HeaderComponent,
+    SleepSceneComponent
   ],
   imports: [
     BrowserModule,
