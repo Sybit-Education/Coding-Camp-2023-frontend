@@ -16,10 +16,7 @@ export const APP_ROUTES: Routes = [
   {path: 'dsgvo', component: DsgvoPageComponent},
   {path: 'clean', component: SygotchiCleanComponent},
   {path: 'impressum', component: ImpressumComponent},
-  {path: '**', redirectTo: 'auth'}
   {path: 'clean', component: SygotchiCleanComponent, canActivate: [AuthGuard]},
-  {path: 'impressum', component: ImpressumComponent },
-  {path: 'impressum', component: ImpressumComponent},
   {path: 'sleep', component: SleepSceneComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: 'auth' }
 ]
