@@ -27,5 +27,9 @@ export class ActionsService {
   wakeUp(): Observable<SyGotchi> {
     return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/wakeUp`, null)
   }
+  clean(): Observable<SyGotchi> {
+    return this.http.put<SyGotchi>(`${this.apiUrl}/tamagotchi/clean`, null)
+  }
+
 
 }
