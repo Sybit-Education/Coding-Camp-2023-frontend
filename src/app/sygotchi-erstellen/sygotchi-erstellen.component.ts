@@ -126,7 +126,20 @@ export class SygotchiErstellenComponent implements OnInit{
 
   createShape() {
     const characterData = this.characterForm.value;
-    this.actionsService.createSygotchi(characterData.name, characterData.eyes, characterData.shape, characterData.color, characterData.height, characterData.width).subscribe(result => {
+    let eye: Eye = Eye.SMALL
+    switch (characterData.eyes) {
+      case 1:
+        eye = Eye.SMALL
+        break;
+      case 2:
+        eye = Eye.MEDIUM
+        break;
+      case 3:
+        eye = Eye.LARGE
+        break;
+    }
+
+    this.actionsService.createSygotchi(characterData.name, eye, characterData.shape, characterData.color, characterData.height, characterData.width).subscribe(result => {
 
       this.store.dispatch(setSygotchi({sygotchi: result as any}))
       this.wsService.initializeWebSocketConnection(result.id)
