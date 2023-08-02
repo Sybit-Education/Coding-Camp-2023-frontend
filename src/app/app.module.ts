@@ -20,6 +20,7 @@ import { ShowSygotchiComponent } from './show-sygotchi/show-sygotchi.component';
 import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstellen.component';
 import { HeaderComponent } from './header/header.component';
 import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
     HeaderComponent,
     SleepSceneComponent,
     ImpressumComponent,
-    NeedsComponent
+    NeedsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
