@@ -28,22 +28,20 @@ export class ShowSygotchiComponent implements OnInit {
 
     this.canvas = paper.project.activeLayer;
 
-    this.actionsService.getSygotchi().subscribe(result => {
+    this.canvas = paper.project.activeLayer;
+    this.store.select(selectSygotchi).subscribe(result => {
       this.sygotchi = result
-      this.store.select(selectSygotchi).subscribe(result => {
-        this.sygotchi = result
 
-        if (this.sygotchi === null) {
-          this.actionsService.getSygotchi().subscribe(result => {
-            this.sygotchi = result
-            this.store.dispatch(setSygotchi({ sygotchi: result as SyGotchi }))
-            this.buildSygotchi()
-          })
-        } else {
-          this.wsService.initializeWebSocketConnection(this.sygotchi.id)
+      if(this.sygotchi === null) {
+        this.actionsService.getSygotchi().subscribe(result => {
+          this.sygotchi = result
+          this.store.dispatch(setSygotchi({sygotchi: result as SyGotchi}))
           this.buildSygotchi()
-        }
-      })
+        })
+      } else {
+        this.wsService.initializeWebSocketConnection(this.sygotchi.id)
+        this.buildSygotchi()
+      }
     })
   }
 

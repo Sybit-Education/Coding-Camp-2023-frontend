@@ -12,6 +12,12 @@ export class ActionsService {
 
   constructor(private http: HttpClient) {}
 
+  getAccountInfo() {
+    const id = localStorage.getItem('id')
+
+    return this.http.get(`${this.apiUrl}/user/${id}`)
+  }
+
   createSygotchi(name, eyes, shape, color, height, width): Observable<SyGotchi> {
     return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi`, { name, eyes, shape, color, height, width })
   }
