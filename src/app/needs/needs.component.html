@@ -1,59 +1,28 @@
 <ng-template #content let-modal>
-  <div>
-
-    //test
-    <div class="col-10">
-      <label class="mt-2">{{need.label}}</label>
-      <div class="progress w-100 mt-2">
-        <div
-          class="progress-bar"
-          role="progressbar"
-          [style.width.%]="need.progress"
-          [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Bedürfnisse</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+    <div class="col-12 mb-3" *ngFor="let need of needs">
+      <div class="row align-items-center">
+      <div class="col-2 text-center">
+          <i *ngIf="need.icon" [ngClass]="need.icon"></i>
+      </div>
+      <div class="col-10">
+        <label class="mt-2">{{need.label}}</label>
+        <div class="progress w-100 mt-2">
+          <div
+            class="progress-bar"
+            role="progressbar"
+            [style.width.%]="need.progress"
+            [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
+          </div>
         </div>
       </div>
-      //test
-
-    <div class="überschrift"><h1>Bedüfnisse</h1></div>
-    <div class="bar">
-      <div class="progress">
-        <p class="bar-text">Durst</p>
-        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%"></div>
-      </div><br>
-      <div class="progress">
-        <p class="bar-text">Sättigung</p>
-        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" ></div>
-      </div><br>
-      <div class="progress">
-        <p class="bar-text">Energie</p>
-        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" ></div>
-      </div><br>
-      <div class="progress">
-        <p class="bar-text">Hygiene</p>
-        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" ></div>
-      </div><br>
-      <div class="progress">
-        <p class="bar-text">Satisfied</p>
-        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" ></div>
-      </div>
-      <div class="progress">
-        <p class="bar-text">Mood</p>
-        <i class="fa-regular fa-lg" [ngClass]="mood">
-
-        </i>
-      </div>
-      <div class="progress-bar" role="progressbar">
-
-      </div>
-    </div>^
+    </div>
   </div>
+</div>
 </ng-template>
-<button (click)="open(content)">Bedüfnisse</button>
 
-
-
-
-
-
-
-
+<button class="btn btn-primary" (click)="open(content)">Bedürfnisse</button>

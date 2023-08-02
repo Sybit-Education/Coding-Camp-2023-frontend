@@ -1,31 +1,29 @@
-import { Mood } from './../enums/mood.enum';
-import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ActionsService } from '../services/actions.service';
-import { Store } from '@ngrx/store';
-import { selectSygotchi } from '../store/sygotchi.selectors';
-import { SyGotchi } from '../entities/syGotchi';
+import {Component} from '@angular/core';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ActionsService} from "../services/actions.service";
+import {Mood} from "../enums/mood.enum";
+import {Store} from "@ngrx/store";
+import {SyGotchi} from "../entities/syGotchi";
+import {selectSygotchi} from "../store/sygotchi.selectors";
 
 @Component({
   selector: 'app-needs',
   templateUrl: './needs.component.html',
   styleUrls: ['./needs.component.scss']
 })
-
 export class NeedsComponent {
-  sygotchi: SyGotchi;
-  mood: string;
+  sygotchi: SyGotchi
+  mood: string
 
   needs = [
-    { label: 'Hunger', icon: 'fa-solid fa-drumstick-bite fa-lg', progress: 0},
-    { label: 'Durst', icon: 'fa-solid fa-glass-water fa-lg', progress: 0},
-    { label: 'Hygiene', icon: 'fa-solid fa-bath fa-lg', progress: 0},
-    { label: 'Müde', icon: 'fa-solid fa-battery-full fa-lg', progress: 0},
-    { label: 'Gelangweilt', icon: 'fa-solid fa-user-group fa-lg', progress: 0},
+    { label: 'Hunger', icon: 'fa-solid fa-drumstick-bite fa-lg', progress: 0 },
+    { label: 'Durst', icon: 'fa-solid fa-glass-water fa-lg', progress: 50 },
+    { label: 'Hygiene', icon: 'fa-solid fa-bath fa-lg', progress: 0 },
+    { label: 'Müde', icon: 'fa-solid fa-battery-full fa-lg', progress: 0 },
+    { label: 'Gelangweilt', icon: 'fa-solid fa-user-group fa-lg', progress: 0 },
   ]
 
   constructor(private modalService: NgbModal, private actionsService: ActionsService, private store: Store) {
-
     this.store.select(selectSygotchi).subscribe(result => {
       this.sygotchi = result as SyGotchi
 
@@ -38,7 +36,6 @@ export class NeedsComponent {
         this.moodIconSelector(this.sygotchi.mood)
       }
     })
-
   }
 
   open(content) {
@@ -60,7 +57,7 @@ export class NeedsComponent {
         this.mood = 'fa-face-grimace'
         break;
       case Mood.THIRSTY:
-        this.mood = 'fa-face-flusched'
+        this.mood = 'fa-face-flushed'
         break;
       case Mood.TIRED:
         this.mood = 'fa-face-tired'
