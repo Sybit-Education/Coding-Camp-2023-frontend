@@ -1,74 +1,73 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActionsService } from '../services/actions.service';
+import { SyGotchi } from '../entities/syGotchi';
 import * as paper from 'paper';
 import { Eye } from '../enums/eye.enum';
 import { Project } from "paper";
+import { WebsocketService } from '../services/websocket.service';
+import { selectSygotchi } from '../store/sygotchi.selectors';
+import { setSygotchi } from '../store/sygotchi.actions';
 import {Store} from "@ngrx/store";
-import {setSygotchi} from "../store/sygotchi.actions";
-import {ActionsService} from "../services/actions.service";
-import {WebsocketService} from "../services/websocket.service";
-
 
 @Component({
-  selector: 'app-sygotchi-erstellen',
-  templateUrl: './sygotchi-erstellen.component.html',
-  styleUrls: ['./sygotchi-erstellen.component.scss']
+  selector: 'app-show-sygotchi',
+  templateUrl: './show-sygotchi.component.html',
+  styleUrls: ['./show-sygotchi.component.scss']
 })
-export class SygotchiErstellenComponent implements OnInit{
-  characterForm: FormGroup;
-  eyes:string[] = Object.values(Eye);
-  canvas: any;
-  shape: any;
-  shapePath: any;
+export class ShowSygotchiComponent implements OnInit {
+  sygotchi: SyGotchi
+  canvas: any
+  shapePath: any
+  shape: any
 
-  constructor(private formBuilder: FormBuilder, private store: Store, private actionsService: ActionsService, private wsService: WebsocketService){
-    this.characterForm = this.formBuilder.group({
-      name: ['',Validators.required],
-      shape: ['RECTANGLE',Validators.required],
-      color: ['#EFD3D2',Validators.required],
-      width: [100,Validators.required],
-      height: [100,Validators.required],
-      eyes: [1,Validators.required],
-      eyeSize: [0.2, Validators.required]
+  constructor(private actionsService: ActionsService, private store: Store, private wsService: WebsocketService) { }
 
-    })
-
-  }
-  ngOnInit(){
+  ngOnInit(): void {
     window['paper'] = paper;
     new Project('canvas');
 
     this.canvas = paper.project.activeLayer;
-    this.drawShape();
-    this.characterForm.valueChanges.subscribe(() =>{
-      this.drawShape();
-    });
+
+    this.canvas = paper.project.activeLayer;
+    this.store.select(selectSygotchi).subscribe(result => {
+      this.sygotchi = result
+
+      if(this.sygotchi === null) {
+        this.actionsService.getSygotchi().subscribe(result => {
+          this.sygotchi = result
+          this.store.dispatch(setSygotchi({sygotchi: result as SyGotchi}))
+          this.buildSygotchi()
+        })
+      } else {
+        this.wsService.initializeWebSocketConnection(this.sygotchi.id)
+        this.buildSygotchi()
+      }
+    })
   }
-  drawShape(){
-    if(this.shapePath){
-      this.shapePath.remove();
-    }
-    const shapeType = this.characterForm.value.shape;
-    const color = this.characterForm.value.color;
-    const width = this.characterForm.value.width;
-    const height = this.characterForm.value.height;
-    const eyes = this.characterForm.value.eyes;
+
+
+  buildSygotchi() {
+    const shapeType = this.sygotchi.shape;
+    const color = this.sygotchi.color;
+    const width = this.sygotchi.width;
+    const height = this.sygotchi.height;
+    const eyes = this.sygotchi.eyes;
     let eyeSize;
     let pupilSize;
 
     switch(eyes){
 
-      case 1:
+      case Eye.SMALL:
         eyeSize = Math.min(width, height) * 0.1;
         pupilSize = eyeSize * 0.5;
       break;
 
-      case 2:
+      case Eye.MEDIUM:
         eyeSize = Math.min(width, height) * 0.2;
         pupilSize = eyeSize * 0.5;
       break;
 
-      case 3:
+      case Eye.LARGE:
         eyeSize = Math.min(width, height) * 0.3;
         pupilSize = eyeSize * 0.5;
       break;
@@ -123,29 +122,4 @@ export class SygotchiErstellenComponent implements OnInit{
     })
     this.canvas.addChild(this.shapePath);
   }
-
-  createShape() {
-    const characterData = this.characterForm.value;
-    let eye: Eye = Eye.SMALL
-    switch (characterData.eyes) {
-      case 1:
-        eye = Eye.SMALL
-        break;
-      case 2:
-        eye = Eye.MEDIUM
-        break;
-      case 3:
-        eye = Eye.LARGE
-        break;
-    }
-
-    this.actionsService.createSygotchi(characterData.name, eye, characterData.shape, characterData.color, characterData.height, characterData.width).subscribe(result => {
-
-      this.store.dispatch(setSygotchi({sygotchi: result as any}))
-      this.wsService.initializeWebSocketConnection(result.id)
-
-      // TODO: Routing
-    })
-  }
 }
-

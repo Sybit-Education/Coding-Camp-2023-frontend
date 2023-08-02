@@ -24,4 +24,17 @@ export class ActionsService {
   createSygotchi(name, eyes, shape, color, height, width): Observable<SyGotchi> {
     return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi`, { name, eyes, shape, color, height, width })
   }
+
+  getSygotchi(): Observable<SyGotchi> {
+    return this.http.get<SyGotchi>(`${this.apiUrl}/tamagotchi`)
+  }
+
+   sleep(): Observable<SyGotchi> {
+    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/sleep`, null)
+  }
+
+  wakeUp(): Observable<SyGotchi> {
+    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/wakeUp`, null)
+  }
+
 }
