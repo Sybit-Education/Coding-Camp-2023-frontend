@@ -12,6 +12,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {APP_ROUTES} from "./misc/app.routes";
 import {StoreModule} from "@ngrx/store";
 import {sygotchiReducer} from "./store/sygotchi.reducer";
+import { TeamSComponent } from './team-s/team-s.component';
 import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { HeaderComponent } from './header/header.component';
@@ -21,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
     AppComponent,
     AuthPageComponent,
     CreationPageComponent,
+    TeamSComponent,
     DsgvoPageComponent,
     ImpressumComponent,
     HeaderComponent
