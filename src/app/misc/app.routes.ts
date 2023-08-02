@@ -5,6 +5,7 @@ import {AuthGuard} from "./auth.guard";
 import { TeamSComponent } from "../team-s/team-s.component";
 import { DsgvoPageComponent } from "../dsgvo-page/dsgvo-page.component";
 import { ImpressumComponent } from "../impressum/impressum.component";
+import { ShowSygotchiComponent } from "../show-sygotchi/show-sygotchi.component";
 
 export const APP_ROUTES: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -12,6 +13,8 @@ export const APP_ROUTES: Routes = [
   {path: 'creation', component: CreationPageComponent, canActivate: [AuthGuard]},
   {path: 'team-site', component: TeamSComponent},
   {path: 'dsgvo', component: DsgvoPageComponent},
-  {path: 'impressum', component: ImpressumComponent},
-  {path: '**', redirectTo: 'auth'}
+  {path: 'impressum', component: ImpressumComponent },
+  {path: 'sygotchi', component: ShowSygotchiComponent, canActivate: [AuthGuard]},
+  {path: '**', redirectTo: 'auth' }
+  
 ]

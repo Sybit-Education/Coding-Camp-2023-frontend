@@ -15,6 +15,7 @@ import {sygotchiReducer} from "./store/sygotchi.reducer";
 import { TeamSComponent } from './team-s/team-s.component';
 import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
 import { ImpressumComponent } from './impressum/impressum.component';
+import { ShowSygotchiComponent } from './show-sygotchi/show-sygotchi.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ImpressumComponent } from './impressum/impressum.component';
     CreationPageComponent,
     TeamSComponent,
     DsgvoPageComponent,
-    ImpressumComponent
+    ImpressumComponent,
+    ShowSygotchiComponent
   ],
   imports: [
     BrowserModule,
