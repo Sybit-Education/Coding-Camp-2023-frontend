@@ -26,4 +26,9 @@ h1 {
 .logo {
   float: right;
   margin: 0px 0px 0px 31%;
+  transition: 0.2s linear;
+}
+
+.logo:hover {
+  margin: 0 0 0 30%;
 }
