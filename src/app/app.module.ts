@@ -27,7 +27,7 @@ import { HeaderComponent } from './header/header.component';
     TeamSComponent,
     DsgvoPageComponent,
     ImpressumComponent,
-    ShowSygotchiComponent
+    ShowSygotchiComponent,
     ImpressumComponent,
     SygotchiErstellenComponent,
     ImpressumComponent,
