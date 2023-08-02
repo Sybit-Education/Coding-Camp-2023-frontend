@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://sygotchi.namibia.sybit.de'
+  apiUrl: 'https://sygotchi.sybit.de'
 };
