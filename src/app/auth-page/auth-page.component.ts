@@ -5,6 +5,8 @@ import { AuthService } from '../services/auth.service';
 import { Store, resultMemoize } from '@ngrx/store';
 import { WebsocketService } from '../services/websocket.service';
 import { HttpStatusCode } from '@angular/common/http';
+import { setSygotchi } from '../store/sygotchi.actions';
+import { SyGotchi } from '../entities/syGotchi';
 
 @Component({
   selector: 'app-auth-page',
@@ -17,7 +19,7 @@ export class AuthPageComponent implements OnInit {
   showError: boolean = false
   errorMessage: string = ''
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private store: Store, private wsService: WebsocketService) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private store: Store, private wsService: WebsocketService, private actionsService) {}
 
   ngOnInit() {
     localStorage.clear()
@@ -59,6 +61,10 @@ export class AuthPageComponent implements OnInit {
         localStorage.setItem('token', result["token"])
         localStorage.setItem('id', result["id"]),
       
+        this.actionsService.getSyGotchi().subscribe(result =>{
+          this.store.dispatch(setSygotchi({sygotchi:result as SyGotchi}))
+          this.wsService.initializeWebSocketConnection(result.id)
+        });
         () => {
           this.router.navigate(['/creation'])
         }
