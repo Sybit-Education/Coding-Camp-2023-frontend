@@ -3,26 +3,26 @@
     <aside>
         <form [formGroup]="characterForm">
             <div class="mb-3">
-                <label class="form-label" for="Name"> Name</label> 
+                <label class="form-label" for="Name"> Name</label>
                 <input class="form-control" type="text" formControlName="name">
             </div>
             <div class="mb-3">
-                <label class="form-label" for="Form">Form</label> 
+                <label class="form-label" for="Form">Form</label>
                 <select class="form-select" type="text" formControlName="shape">
                     <option value="RECTANGLE">Rechteck</option>
                     <option value="TRIANGLE">Dreieck</option>
                     <option value="CIRCLE">Kreis</option>
                 </select>
             </div>
-            
+
             <div class="mb-3">
-                <label class="form-label" for="Breite">Breite</label> 
+                <label class="form-label" for="Breite">Breite</label>
                 <input class="form-range" type="range"min="100" max="150" formControlName="width">
             </div>
             <div *ngIf="characterForm.value.shape=='RECTANGLE'" class="mb-3">
-                <label class="form-label" for="Höhe">Höhe</label> 
+                <label class="form-label" for="Höhe">Höhe</label>
                 <input class="form-range" type="range" min="100" max="150" formControlName="height">
-            </div>    
+            </div>
             <div class="mb-3">
                 <label class="form-label" for="Augen">Augen</label> <br>
                 <input class="form-range" type="range" min="1" max="3" formControlName="eyes">
@@ -31,13 +31,13 @@
                 <label class="form-label" for="körperfarbe">Körperfarbe</label> <br>
                 <input type="color" class="w-100 form-color form-control-color" formControlName="color">
             </div>
-            <button class="btn btn-primary w-100">Submit</button>
+            <button class="btn btn-primary w-100" (click)="createShape()">Submit</button>
         </form>
     </aside>
     <main>
-       
-    <canvas id="canvas" height="200" width="200"></canvas>    
+
+    <canvas id="canvas" height="200" width="200"></canvas>
     </main>
-   
+
 
 </div>

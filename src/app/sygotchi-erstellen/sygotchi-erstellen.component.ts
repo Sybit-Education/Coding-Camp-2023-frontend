@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as paper from 'paper';
 import { Eye } from '../enums/eye.enum';
 import { Project } from "paper";
+import {Store} from "@ngrx/store";
+import {setSygotchi} from "../store/sygotchi.actions";
+import {ActionsService} from "../services/actions.service";
+import {WebsocketService} from "../services/websocket.service";
 
 
 @Component({
@@ -16,7 +20,8 @@ export class SygotchiErstellenComponent implements OnInit{
   canvas: any;
   shape: any;
   shapePath: any;
-  constructor(private formBuilder: FormBuilder){
+
+  constructor(private formBuilder: FormBuilder, private store: Store, private actionsService: ActionsService, private wsService: WebsocketService){
     this.characterForm = this.formBuilder.group({
       name: ['',Validators.required],
       shape: ['RECTANGLE',Validators.required],
@@ -25,7 +30,7 @@ export class SygotchiErstellenComponent implements OnInit{
       height: [100,Validators.required],
       eyes: [1,Validators.required],
       eyeSize: [0.2, Validators.required]
-      
+
     })
 
   }
@@ -53,7 +58,7 @@ export class SygotchiErstellenComponent implements OnInit{
 
     switch(eyes){
 
-      case 1: 
+      case 1:
         eyeSize = Math.min(width, height) * 0.1;
         pupilSize = eyeSize * 0.5;
       break;
@@ -77,7 +82,7 @@ export class SygotchiErstellenComponent implements OnInit{
           fillColor: color
         });
         break;
-      
+
       case 'RECTANGLE':
         this.shape = new paper.Path.Rectangle({
           point: paper.view.center.subtract(new paper.Point(width / 2, height / 2)),
@@ -119,8 +124,15 @@ export class SygotchiErstellenComponent implements OnInit{
     this.canvas.addChild(this.shapePath);
   }
 
+  createShape() {
+    const characterData = this.characterForm.value;
+    this.actionsService.createSygotchi(characterData.name, characterData.eyes, characterData.shape, characterData.color, characterData.height, characterData.width).subscribe(result => {
 
+      this.store.dispatch(setSygotchi({sygotchi: result as any}))
+      this.wsService.initializeWebSocketConnection(result.id)
 
-
+      // TODO: Routing
+    })
+  }
 }
 
