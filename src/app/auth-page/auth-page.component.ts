@@ -36,7 +36,7 @@ export class AuthPageComponent implements OnInit {
         result => {
           localStorage.setItem('token', result["token"])
           localStorage.setItem('id', result["id"])
-          this.router.navigate(['/creation']);
+          this.router.navigate(['/create']);
         },
       err => {
         if (err.status === HttpStatusCode.Unauthorized) {
@@ -67,7 +67,7 @@ export class AuthPageComponent implements OnInit {
               this.wsService.initializeWebSocketConnection(result.id)
           },
         () => {
-          this.router.navigate(['/creation'])
+          this.router.navigate(['/create'])
         })
       },
       err => {
