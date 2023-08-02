@@ -5,6 +5,9 @@ import { AuthService } from '../services/auth.service';
 import { Store, resultMemoize } from '@ngrx/store';
 import { WebsocketService } from '../services/websocket.service';
 import { HttpStatusCode } from '@angular/common/http';
+import { setSygotchi } from '../store/sygotchi.actions';
+import { SyGotchi } from '../entities/syGotchi';
+import {ActionsService} from "../services/actions.service";
 
 @Component({
   selector: 'app-auth-page',
@@ -17,7 +20,7 @@ export class AuthPageComponent implements OnInit {
   showError: boolean = false
   errorMessage: string = ''
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private store: Store, private wsService: WebsocketService) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private store: Store, private wsService: WebsocketService, private actionsService: ActionsService) {}
 
   ngOnInit() {
     localStorage.clear()
@@ -34,7 +37,7 @@ export class AuthPageComponent implements OnInit {
         result => {
           localStorage.setItem('token', result["token"])
           localStorage.setItem('id', result["id"])
-          this.router.navigate(['/creation']);
+          this.router.navigate(['/create']);
         },
       err => {
         if (err.status === HttpStatusCode.Unauthorized) {
@@ -44,7 +47,7 @@ export class AuthPageComponent implements OnInit {
           this.errorMessage = 'Unerwarteter Fehler'
           this.showError = true;
         }
-      } 
+      }
       );
     } else {
     this.errorMessage = 'Passwörter stimmen nicht überein.'
@@ -57,11 +60,17 @@ export class AuthPageComponent implements OnInit {
     .subscribe(
       result => {
         localStorage.setItem('token', result["token"])
-        localStorage.setItem('id', result["id"]),
-      
-        () => {
-          this.router.navigate(['/creation'])
-        }
+        localStorage.setItem('id', result["id"])
+
+          this.actionsService.getSygotchi().subscribe(result => {
+            this.store.dispatch(setSygotchi({sygotchi: result as SyGotchi}))
+              this.wsService.initializeWebSocketConnection(result.id)
+
+              this.router.navigate(['/sleep'])
+          },
+            () => {
+            this.router.navigate(['/create'])
+          })
       },
       err => {
         if (err.status === HttpStatusCode.BadRequest) {

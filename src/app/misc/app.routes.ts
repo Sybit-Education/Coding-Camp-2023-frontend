@@ -19,6 +19,7 @@ export const APP_ROUTES: Routes = [
   {path: '**', redirectTo: 'auth'}
   {path: 'clean', component: SygotchiCleanComponent, canActivate: [AuthGuard]},
   {path: 'impressum', component: ImpressumComponent },
+  {path: 'impressum', component: ImpressumComponent},
   {path: 'sleep', component: SleepSceneComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: 'auth' }
 ]
