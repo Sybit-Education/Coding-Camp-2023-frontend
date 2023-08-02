@@ -17,7 +17,7 @@ export class NeedsComponent {
 
   needs = [
     { label: 'Hunger', icon: 'fa-solid fa-drumstick-bite fa-lg', progress: 0 },
-    { label: 'Durst', icon: 'fa-solid fa-glass-water fa-lg', progress: 50 },
+    { label: 'Durst', icon: 'fa-solid fa-glass-water fa-lg', progress: 0 },
     { label: 'Hygiene', icon: 'fa-solid fa-bath fa-lg', progress: 0 },
     { label: 'Müde', icon: 'fa-solid fa-battery-full fa-lg', progress: 0 },
     { label: 'Gelangweilt', icon: 'fa-solid fa-user-group fa-lg', progress: 0 },
