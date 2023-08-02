@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./misc/auth.interceptor";
 import { AuthPageComponent } from './auth-page/auth-page.component';
-import { CreationPageComponent } from './creation-page/creation-page.component';
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
@@ -16,17 +15,18 @@ import { LogoComponent } from './logo/logo.component';
 import { TeamSComponent } from './team-s/team-s.component';
 import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
 import { ImpressumComponent } from './impressum/impressum.component';
+import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstellen.component';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthPageComponent,
-    CreationPageComponent,
     LogoComponent,
-    CreationPageComponent,
     TeamSComponent,
     DsgvoPageComponent,
+    ImpressumComponent,
+    SygotchiErstellenComponent,
     ImpressumComponent,
     HeaderComponent
   ],
