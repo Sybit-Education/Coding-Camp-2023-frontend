@@ -6,7 +6,6 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <app-leaderboard></app-leaderboard>
     <div class="collapse navbar-collapse" id="navbarToggler">
       <span class="d-flex me-auto"></span>
       <ul class="navbar-nav mb-2 mb-lg-0">
@@ -21,6 +20,9 @@
             <i class="fa-solid fa-question"></i>
             <span>Hilfe</span>
           </a>
+        </li>
+        <li class="nav-item leaderboard">
+          <app-leaderboard></app-leaderboard>
         </li>
         <li class="nav-item me-auto">
           <a ngbDropdownItem routerLink="/login">
