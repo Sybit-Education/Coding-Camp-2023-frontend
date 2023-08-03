@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {isDevMode, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -44,10 +44,8 @@ import { BedroomComponent } from './bedroom/bedroom.component';
     SygotchiErstellenComponent,
     HeaderComponent,
     SleepSceneComponent,
-    ImpressumComponent,
     NeedsComponent,
     KitchenComponent,
-    NeedsComponent,
     SygotchiCleanComponent,
     FooterComponent,
     ErrorPageComponent,
@@ -55,8 +53,6 @@ import { BedroomComponent } from './bedroom/bedroom.component';
     KitchenFunctionComponent,
     BedroomComponent,
     HowToPlayComponent,
-    ErrorPageComponent
-    FooterComponent,
     LeaderboardComponent,
     AlivePipe
   ],
