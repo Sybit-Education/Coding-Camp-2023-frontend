@@ -146,16 +146,16 @@ export class ShowSygotchiComponent implements AfterViewInit {
     })
 
     this.eyeSleepingLeft = new this.paperScope.Path.Arc(
-      new this.paperScope.Point(100, 60),
+      new this.paperScope.Point(120 - eyeSize, 60),
       new this.paperScope.Point(120, 64),
-      new this.paperScope.Point(140, 60)
+      new this.paperScope.Point(120 + eyeSize, 60)
     );
     this.eyeSleepingLeft.strokeColor = 'black';
 
     this.eyeSleepingRight = new this.paperScope.Path.Arc(
-      new this.paperScope.Point(160, 60),
+      new this.paperScope.Point(180 - eyeSize, 60),
       new this.paperScope.Point(180, 64),
-      new this.paperScope.Point(200, 60)
+      new this.paperScope.Point(180 + eyeSize, 60)
     );
     this.eyeSleepingRight.strokeColor = 'black';
 
@@ -183,9 +183,9 @@ export class ShowSygotchiComponent implements AfterViewInit {
     switch(mood){
       case Mood.HAPPY:
         this.mouth= new this.paperScope.Path.Arc(
-          new this.paperScope.Point(width - 40, height * .8 ),
+          new this.paperScope.Point(width - width/4, height * .8 ),
           new this.paperScope.Point(width, (height * .8 ) + 8),
-          new this.paperScope.Point(width + 40, height * .8 )
+          new this.paperScope.Point(width + width/4, height * .8 )
         );
         this.mouth.strokeColor = 'black';
         this.mouth.strokeWidth = 4;
@@ -194,9 +194,9 @@ export class ShowSygotchiComponent implements AfterViewInit {
 
       case Mood.SAD:
         this.mouth= new this.paperScope.Path.Arc(
-          new this.paperScope.Point(width - 30, height * .8 + 4),
+          new this.paperScope.Point(width - width/4, height * .8 + 4),
           new this.paperScope.Point(width, (height * .8 ) - 18),
-          new this.paperScope.Point(width + 30, height * .8 + 4)
+          new this.paperScope.Point(width + width/4, height * .8 + 4)
         );
         this.mouth.strokeColor = 'black';
         this.mouth.strokeWidth = 4;
@@ -206,9 +206,10 @@ export class ShowSygotchiComponent implements AfterViewInit {
 
         this.mouth = new this.paperScope.Path.Circle({
           center: this.paperScope.view.center.subtract(new this.paperScope.Point(0, height / -3)),
-          radius: Math.min(width, height) * 0.1,
+          radius: Math.min(width, height) * width/4,
           fillColor: 'red',
-          strokeColor: 'black'
+          strokeColor: 'black',
+          strokeWidth: 3
         })
 
         break;
