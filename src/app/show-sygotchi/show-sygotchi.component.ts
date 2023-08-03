@@ -42,8 +42,6 @@ export class ShowSygotchiComponent implements AfterViewInit {
     this.paperScope = new paper.PaperScope();
     this.paperScope.setup(this.canvas.nativeElement);
 
-    new Project('canvas');
-
     this.store.select(selectSygotchi).subscribe(result => {
       this.sygotchi = result
 
@@ -62,7 +60,6 @@ export class ShowSygotchiComponent implements AfterViewInit {
     this.paperScope.view.onFrame = (event: any) => {
       this.onAnimate();
     };
-    this.paperScope.view.play();
   }
   buildSygotchi() {
     const shapeType = this.sygotchi.shape;
@@ -149,20 +146,20 @@ export class ShowSygotchiComponent implements AfterViewInit {
     })
 
     this.eyeSleepingLeft = new this.paperScope.Path.Arc(
-      new this.paperScope.Point(90, 120),
-      new this.paperScope.Point(120, 124),
-      new this.paperScope.Point(130, 120)
+      new this.paperScope.Point(100, 60),
+      new this.paperScope.Point(120, 64),
+      new this.paperScope.Point(140, 60)
     );
     this.eyeSleepingLeft.strokeColor = 'black';
 
     this.eyeSleepingRight = new this.paperScope.Path.Arc(
-      new this.paperScope.Point(150, 120),
-      new this.paperScope.Point(170, 124),
-      new this.paperScope.Point(190, 120)
+      new this.paperScope.Point(160, 60),
+      new this.paperScope.Point(180, 64),
+      new this.paperScope.Point(200, 60)
     );
     this.eyeSleepingRight.strokeColor = 'black';
 
-    this.setMood(Mood.HAPPY); // set initial mood
+    this.setMood(this.sygotchi.mood); // set initial mood
   }
 
   positionPupils(event) {
@@ -186,9 +183,9 @@ export class ShowSygotchiComponent implements AfterViewInit {
     switch(mood){
       case Mood.HAPPY:
         this.mouth= new this.paperScope.Path.Arc(
-          new this.paperScope.Point(width - 50, height * 1.2 ),
-          new this.paperScope.Point(width, (height * 1.2 ) + 8),
-          new this.paperScope.Point(width + 30, height * 1.2 )
+          new this.paperScope.Point(width - 40, height * .8 ),
+          new this.paperScope.Point(width, (height * .8 ) + 8),
+          new this.paperScope.Point(width + 40, height * .8 )
         );
         this.mouth.strokeColor = 'black';
         this.mouth.strokeWidth = 4;
@@ -197,9 +194,9 @@ export class ShowSygotchiComponent implements AfterViewInit {
 
       case Mood.SAD:
         this.mouth= new this.paperScope.Path.Arc(
-          new this.paperScope.Point(width - 50, height * 1.2 ),
-          new this.paperScope.Point(width, (height * 1.2 ) - 8),
-          new this.paperScope.Point(width + 30, height * 1.2 )
+          new this.paperScope.Point(width - 30, height * .8 + 4),
+          new this.paperScope.Point(width, (height * .8 ) - 18),
+          new this.paperScope.Point(width + 30, height * .8 + 4)
         );
         this.mouth.strokeColor = 'black';
         this.mouth.strokeWidth = 4;
@@ -233,7 +230,13 @@ export class ShowSygotchiComponent implements AfterViewInit {
         break;
 
       case Mood.BORED:
-
+        this.mouth= new this.paperScope.Path.Arc(
+          new this.paperScope.Point(width - 40, height * 0.8 ),
+          new this.paperScope.Point(width, (height * 0.8 ) - 4),
+          new this.paperScope.Point(width + 40, height * 0.8 )
+        );
+        this.mouth.strokeColor = 'black';
+        this.mouth.strokeWidth = 4;
         break;
 
     }

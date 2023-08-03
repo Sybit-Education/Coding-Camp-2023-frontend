@@ -22,7 +22,7 @@ export class SleepSceneComponent implements OnInit {
     this.store.select(selectSygotchi)
       .subscribe(
         syGotchi => {
-          this.isAsleep = syGotchi.sleeping
+          this.isAsleep = syGotchi?.sleeping ? true : false
           this.sygotchi = syGotchi
         }
       )
