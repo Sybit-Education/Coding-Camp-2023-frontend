@@ -7,6 +7,7 @@ import { DsgvoPageComponent } from "../dsgvo-page/dsgvo-page.component";
 import { ImpressumComponent } from "../impressum/impressum.component";
 import { SygotchiCleanComponent } from "../sygotchi-clean/sygotchi-clean.component";
 import {SleepSceneComponent} from "../sleep-scene/sleep-scene.component";
+import { ErrorPageComponent } from "../error-page/error-page.component";
 
 export const APP_ROUTES: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -18,5 +19,6 @@ export const APP_ROUTES: Routes = [
   {path: 'impressum', component: ImpressumComponent},
   {path: 'clean', component: SygotchiCleanComponent, canActivate: [AuthGuard]},
   {path: 'sleep', component: SleepSceneComponent, canActivate: [AuthGuard]},
-  {path: '**', redirectTo: 'auth' }
+  {path: 'error', component: ErrorPageComponent},
+  {path: '**', redirectTo: 'error' }
 ]
