@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">
-      <img alt="Sygotchi-logo" class="logo" src="assets/images/sygotchi-logo.png">
+    <a class="navbar-brand" >
+      <img (click)="checkLogin()" alt="Sygotchi-logo" class="logo" src="assets/images/sygotchi-logo.png">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -16,7 +16,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a ngbDropdownItem routerLink="/tutorial">
+          <a ngbDropdownItem routerLink="/how-to-play">
             <i class="fa-solid fa-question"></i>
             <span>Hilfe</span>
           </a>
@@ -25,7 +25,7 @@
           <app-leaderboard></app-leaderboard>
         </li>
         <li class="nav-item me-auto">
-          <a ngbDropdownItem routerLink="/login">
+          <a ngbDropdownItem routerLink="/auth" *ngIf="authService.isAuthenticated()">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span>Logout</span>
           </a>

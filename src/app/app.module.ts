@@ -21,9 +21,16 @@ import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstel
 import { HeaderComponent } from './header/header.component';
 import { SygotchiCleanComponent } from './sygotchi-clean/sygotchi-clean.component';
 import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
+import { KitchenComponent } from './kitchen/kitchen.component';
 import { FooterComponent } from './footer/footer.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { AlivePipe } from './pipes/alive.pipe';
+import { HowToPlayComponent } from './how-to-play/how-to-play.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { CleanFunctionComponent } from './clean-function/clean-function.component';
+import { KitchenFunctionComponent } from './kitchen-function/kitchen-function.component';
+import { BedroomComponent } from './bedroom/bedroom.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +44,18 @@ import { AlivePipe } from './pipes/alive.pipe';
     SygotchiErstellenComponent,
     HeaderComponent,
     SleepSceneComponent,
+    ImpressumComponent,
+    NeedsComponent,
+    KitchenComponent,
     NeedsComponent,
     SygotchiCleanComponent,
+    FooterComponent,
+    ErrorPageComponent,
+    CleanFunctionComponent,
+    KitchenFunctionComponent,
+    BedroomComponent,
+    HowToPlayComponent,
+    ErrorPageComponent
     FooterComponent,
     LeaderboardComponent,
     AlivePipe
@@ -50,7 +67,13 @@ import { AlivePipe } from './pipes/alive.pipe';
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
     NgbModule,
-    StoreModule.forRoot({ sygotchi: sygotchiReducer })
+    StoreModule.forRoot({ sygotchi: sygotchiReducer }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
