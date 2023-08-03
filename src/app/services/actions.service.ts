@@ -27,7 +27,7 @@ export class ActionsService {
   }
 
   cleanSygotchi(): Observable<SyGotchi> {
-    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/clean`, null)
+    return this.http.put<SyGotchi>(`${this.apiUrl}/tamagotchi/clean`, null)
   }
 
   playWithSygotchi(): Observable<SyGotchi> {
@@ -35,11 +35,11 @@ export class ActionsService {
   }
 
   feedSygotchi(): Observable<SyGotchi> {
-    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/feed`, null)
+    return this.http.put<SyGotchi>(`${this.apiUrl}/tamagotchi/feed`, null)
   }
 
   drinkSygotchi(): Observable<SyGotchi> {
-    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/drink`, null)
+    return this.http.put<SyGotchi>(`${this.apiUrl}/tamagotchi/drink`, null)
   }
 
   sleepSygotchi(): Observable<SyGotchi> {
@@ -58,7 +58,7 @@ export class ActionsService {
     return this.http.get<SyGotchi>(`${this.apiUrl}/tamagotchi/highscore`)
   }
 
-   sleep(): Observable<SyGotchi> {
+  sleep(): Observable<SyGotchi> {
     return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/sleep`, null)
   }
 
