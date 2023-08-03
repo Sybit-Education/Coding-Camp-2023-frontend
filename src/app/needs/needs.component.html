@@ -6,11 +6,15 @@
           <i *ngIf="need.icon" [ngClass]="need.icon"></i>
         </div>
         <div class="col-10">
-          <label class="mt-2">{{ need.progress }}%</label>
-          <div class="progress w-50 mt-2">
-            <div class="progress-bar" role="progressbar" [style.width.%]="need.progress"
-              [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
+          <div class="d-flex align-items-center">
+            <div class="w-50 me-2">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" [style.width.%]="need.progress"
+                     [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
+                </div>
+              </div>
             </div>
+            <label>{{ need.progress }}%</label>
           </div>
         </div>
       </div>
@@ -21,17 +25,30 @@
           <i *ngIf="need.icon" [ngClass]="need.icon"></i>
         </div>
         <div class="col-10">
-          <label class="mt-2">{{ need.progress }}%</label>
-          <div class="progress w-50 mt-2">
-            <div class="progress-bar" role="progressbar" [style.width.%]="need.progress"
-              [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
+          <div class="d-flex align-items-center">
+            <div class="w-50 me-2">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" [style.width.%]="need.progress"
+                     [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
+                </div>
+              </div>
             </div>
+            <label>{{ need.progress }}%</label>
           </div>
         </div>
       </div>
-      <label>Stimmung:
-        <i class="fa-regular fa-lg" [ngClass]="mood"></i>
-      </label>
+      <div>
+        <label>Stimmung:
+          <i class="fa-regular fa-lg" [ngClass]="mood"></i>
+        </label>
+        <br>
+        <label>Rang:
+          <span>
+            {{ sygotchi.rank }}
+            <i class="fa-solid fa-trophy"></i>
+          </span>
+        </label>
+      </div>
     </div>
   </div>
 </div>
