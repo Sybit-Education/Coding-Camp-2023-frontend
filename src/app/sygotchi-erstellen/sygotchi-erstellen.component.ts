@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as paper from 'paper';
 import { Eye } from '../enums/eye.enum';
@@ -15,10 +15,14 @@ import { Router } from '@angular/router';
   templateUrl: './sygotchi-erstellen.component.html',
   styleUrls: ['./sygotchi-erstellen.component.scss']
 })
-export class SygotchiErstellenComponent implements OnInit{
+export class SygotchiErstellenComponent implements AfterViewInit {
+
+
+  @ViewChild('canvas', { static: false }) canvas: ElementRef;
+  paperScope: paper.PaperScope;
+
   characterForm: FormGroup;
   eyes:string[] = Object.values(Eye);
-  canvas: any;
   shape: any;
   shapePath: any;
 
@@ -33,13 +37,14 @@ export class SygotchiErstellenComponent implements OnInit{
       eyeSize: [0.2, Validators.required]
 
     })
-
   }
-  ngOnInit(){
-    window['paper'] = paper;
+
+  ngAfterViewInit(){
+    this.paperScope = new paper.PaperScope();
+    this.paperScope.setup(this.canvas.nativeElement);
+
     new Project('canvas');
 
-    this.canvas = paper.project.activeLayer;
     this.drawShape();
     this.characterForm.valueChanges.subscribe(() =>{
       this.drawShape();
@@ -77,7 +82,7 @@ export class SygotchiErstellenComponent implements OnInit{
     switch(shapeType){
       case 'TRIANGLE':
         this.shape = new paper.Path.RegularPolygon({
-          center: paper.view.center,
+          center: this.paperScope.view.center,
           sides: 3,
           radius: width / 2,
           fillColor: color
@@ -86,14 +91,14 @@ export class SygotchiErstellenComponent implements OnInit{
 
       case 'RECTANGLE':
         this.shape = new paper.Path.Rectangle({
-          point: paper.view.center.subtract(new paper.Point(width / 2, height / 2)),
+          point: this.paperScope.view.center.subtract(new paper.Point(width / 2, height / 2)),
           size: [width, height],
           fillColor: color
         });
         break;
       case 'CIRCLE':
         this.shape = new paper.Path.Circle({
-          center: paper.view.center,
+          center: this.paperScope.view.center,
           radius: width / 2,
           fillColor: color
         });
@@ -122,7 +127,7 @@ export class SygotchiErstellenComponent implements OnInit{
     this.shapePath = new paper.Group({
       children: [this.shape, eyeLeft, eyeRight, pupilRight, pupilLeft]
     })
-    this.canvas.addChild(this.shapePath);
+
   }
 
   createShape() {

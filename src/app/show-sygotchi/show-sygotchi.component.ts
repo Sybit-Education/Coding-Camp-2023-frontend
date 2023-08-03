@@ -8,8 +8,7 @@ import { WebsocketService } from '../services/websocket.service';
 import { selectSygotchi } from '../store/sygotchi.selectors';
 import { setSygotchi } from '../store/sygotchi.actions';
 import {Store} from "@ngrx/store";
-import { interval } from 'rxjs';
-import { Point } from 'paper/dist/paper-core';
+import { Mood } from '../enums/mood.enum';
 
 @Component({
   selector: 'app-show-sygotchi',
@@ -28,9 +27,14 @@ export class ShowSygotchiComponent implements AfterViewInit {
   eyeLeft: any
   eyeRight: any
 
+  eyeSleepingLeft: any
+  eyeSleepingRight: any
+
   animationFrame = 0
 
-  blinkScales = [ 1, 1, 1, 0.9, 0.5, 0.5, 1.5, 1.5, 1.5, 1.3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  blinkScales = [ 1, 1, 1, 0.9, 0.5, 0.5, 1.5, 1.5, 1.5, 1.3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+  mouth: any
 
   constructor(private actionsService: ActionsService, private store: Store, private wsService: WebsocketService) { }
 
@@ -143,15 +147,113 @@ export class ShowSygotchiComponent implements AfterViewInit {
     this.shapePath = new this.paperScope.Group({
       children: [this.shape, this.eyeLeft, this.eyeRight]
     })
+
+    this.eyeSleepingLeft = new this.paperScope.Path.Arc(
+      new this.paperScope.Point(90, 120),
+      new this.paperScope.Point(120, 124),
+      new this.paperScope.Point(130, 120)
+    );
+    this.eyeSleepingLeft.strokeColor = 'black';
+
+    this.eyeSleepingRight = new this.paperScope.Path.Arc(
+      new this.paperScope.Point(150, 120),
+      new this.paperScope.Point(170, 124),
+      new this.paperScope.Point(190, 120)
+    );
+    this.eyeSleepingRight.strokeColor = 'black';
+
+    this.setMood(Mood.HAPPY); // set initial mood
   }
+
+  positionPupils(event) {
+    var vector = new this.paperScope.Point(event.x - 3, event.y - 3);
+    vector.length = Math.min(30, vector.length);
+    this.pupilLeft.position = this.eyeLeft.position + vector;
+
+    vector = new this.paperScope.Point(event.x - 3, event.y - 3);
+    vector.length = Math.min(30, vector.length);
+    this.pupilRight.position = this.eyeRight.position + vector;
+  }
+
+  setMood(mood: Mood) {
+    const width = this.sygotchi.width;
+    const height = this.sygotchi.height;
+
+    if(this.mouth) {
+      this.mouth.remove();
+    }
+
+    switch(mood){
+      case Mood.HAPPY:
+        this.mouth= new this.paperScope.Path.Arc(
+          new this.paperScope.Point(width - 50, height * 1.2 ),
+          new this.paperScope.Point(width, (height * 1.2 ) + 8),
+          new this.paperScope.Point(width + 30, height * 1.2 )
+        );
+        this.mouth.strokeColor = 'black';
+        this.mouth.strokeWidth = 4;
+
+        break;
+
+      case Mood.SAD:
+        this.mouth= new this.paperScope.Path.Arc(
+          new this.paperScope.Point(width - 50, height * 1.2 ),
+          new this.paperScope.Point(width, (height * 1.2 ) - 8),
+          new this.paperScope.Point(width + 30, height * 1.2 )
+        );
+        this.mouth.strokeColor = 'black';
+        this.mouth.strokeWidth = 4;
+
+        break;
+      case Mood.ANGRY:
+
+        this.mouth = new this.paperScope.Path.Circle({
+          center: this.paperScope.view.center.subtract(new this.paperScope.Point(0, height / -3)),
+          radius: Math.min(width, height) * 0.1,
+          fillColor: 'red',
+          strokeColor: 'black'
+        })
+
+        break;
+
+      case Mood.HUNGRY:
+
+        break;
+
+      case Mood.THIRSTY:
+
+        break;
+
+      case Mood.TIRED:
+
+        break;
+
+      case Mood.DIRTY:
+
+        break;
+
+      case Mood.BORED:
+
+        break;
+
+    }
+  }
+
   onAnimate() {
-    if(this.eyeLeft && this.eyeRight) {
+    if(this.eyeLeft && this.eyeRight && !this.sygotchi.sleeping) {
       this.eyeLeft.scale(this.blinkScales[this.animationFrame]);
       this.eyeRight.scale(this.blinkScales[this.animationFrame]);
+      this.eyeSleepingLeft.visible = false;
+      this.eyeSleepingRight.visible = false;
       this.animationFrame++;
       if (this.animationFrame >= this.blinkScales.length) {
         this.animationFrame = 0;
       }
+    } else if(this.eyeLeft && this.eyeRight && this.sygotchi.sleeping) {
+      this.eyeLeft.visible = false;
+      this.eyeRight.visible = false;
+      this.eyeSleepingLeft.visible = true;
+      this.eyeSleepingRight.visible = true;
     }
 
   }
@@ -160,14 +262,4 @@ export class ShowSygotchiComponent implements AfterViewInit {
     //this.positionPupils(e);
   }
 
-  positionPupils(event) {
-    //console.log(event)
-    var vector = new Point(event.x - 300, event.y - 300);
-    vector.length = Math.min(30, vector.length);
-    this.pupilLeft.position = this.eyeLeft.position + vector;
-
-    vector = new Point(event.x - 500, event.y - 300);
-    vector.length = Math.min(30, vector.length);
-    this.pupilRight.position = this.eyeRight.position + vector;
-  }
 }
