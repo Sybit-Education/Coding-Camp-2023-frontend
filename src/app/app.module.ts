@@ -23,6 +23,7 @@ import { SygotchiCleanComponent } from './sygotchi-clean/sygotchi-clean.componen
 import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
 import { KitchenComponent } from './kitchen/kitchen.component';
 import { FooterComponent } from './footer/footer.component';
+import { HowToPlayComponent } from './how-to-play/how-to-play.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
@@ -44,6 +45,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     NeedsComponent,
     SygotchiCleanComponent,
     FooterComponent,
+    HowToPlayComponent,
     ErrorPageComponent
   ],
   imports: [
