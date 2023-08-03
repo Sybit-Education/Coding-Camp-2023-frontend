@@ -13,7 +13,7 @@ export class HeaderComponent {
 
   checkLogin(){
     if(localStorage.token){
-      this.route.navigate(['/sleep'])
+      this.route.navigate(['/bedroom'])
     }else{
       this.route.navigate(['/auth'])
     }
