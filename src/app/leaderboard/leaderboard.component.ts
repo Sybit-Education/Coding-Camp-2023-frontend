@@ -21,4 +21,17 @@ export class LeaderboardComponent {
       this.modalService.open(content)
     })
   }
+
+  getTableRowBackground(rank: number): string {
+    switch (rank) {
+      case 1:
+        return 'bg-gold';
+      case 2:
+        return 'bg-silver';
+      case 3:
+        return 'bg-bronze';
+      default:
+        return '';
+    }
+  }
 }

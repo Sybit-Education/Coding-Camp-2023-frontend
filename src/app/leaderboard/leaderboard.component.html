@@ -17,7 +17,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let sygotchi of sygotchis">
+          <tr *ngFor="let sygotchi of sygotchis; let i = index" [ngClass]="getTableRowBackground(i + 1)">
               <td>{{sygotchi.rank}}</td>
               <td>{{sygotchi.name}}</td>
               <td>{{sygotchi.createdAt | date}}</td>
