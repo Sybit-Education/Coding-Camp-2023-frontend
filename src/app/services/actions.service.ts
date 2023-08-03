@@ -31,7 +31,7 @@ export class ActionsService {
   }
 
   playWithSygotchi(): Observable<SyGotchi> {
-    return this.http.post<SyGotchi>(`${this.apiUrl}/tamagotchi/play`, null)
+    return this.http.put<SyGotchi>(`${this.apiUrl}/tamagotchi/play`, null)
   }
 
   feedSygotchi(): Observable<SyGotchi> {

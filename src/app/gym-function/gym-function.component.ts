@@ -29,9 +29,8 @@ export class GymFunctionComponent {
         }
       )
   }
-  play(){
-    console.log(this.sygotchi)
-    if(this.isTired <= 50 ){
+  train(){
+    if(this.isTired >= 50 ){
       this.actionsService.playWithSygotchi()
       .subscribe
       (res => {
