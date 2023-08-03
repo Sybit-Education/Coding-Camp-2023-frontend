@@ -29,6 +29,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { CleanFunctionComponent } from './clean-function/clean-function.component';
 import { KitchenFunctionComponent } from './kitchen-function/kitchen-function.component';
 import { BedroomComponent } from './bedroom/bedroom.component';
+import { GymComponent } from './gym/gym.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { BedroomComponent } from './bedroom/bedroom.component';
     KitchenFunctionComponent,
     BedroomComponent,
     HowToPlayComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    GymComponent
   ],
   imports: [
     BrowserModule,
