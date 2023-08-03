@@ -1,0 +1,29 @@
+span {
+    margin-left: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .modal-link {
+    cursor: pointer;
+  }
+  
+  .bg-gold {
+    background: linear-gradient(to bottom, #fffde5, #ffe86a, #fffde5);
+    box-shadow: inset 0px 0px 20px #ffe86a, 0px 0px 10px #ffd700;
+    border-radius: 5px;
+  }
+  
+  .bg-silver {
+    background: linear-gradient(to bottom, #c0c0c0, #d3d3d3, #c0c0c0);
+    box-shadow: inset 0px 0px 10px #d3d3d3, 0px 0px 10px #d3d3d3;
+    border-radius: 5px;
+  }
+  
+  .bg-bronze {
+    background: linear-gradient(to bottom, #d2b48c, #b87333, #d2b48c);
+    border-radius: 5px;
+  }
+  
