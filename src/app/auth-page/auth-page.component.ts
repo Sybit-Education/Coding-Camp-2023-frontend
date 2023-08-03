@@ -31,11 +31,14 @@ export class AuthPageComponent implements OnInit {
   }
 
   register() {
-    if (!this.authForm.value.username.match(/^[A-Za-z0-9-_]{3,}$/gm)) {
+    if (!this.authForm.value.username.match(/^[A-Za-z0-9-_].$/gm)) {
       this.errorMessage = 'Benutzername darf nur Buchstaben, Zahlen und Bindestriche sowie Unterstriche enthalten.'
       this.showError = true;
+    } else if (this.authForm.value.username.length < 3) {
+      this.errorMessage = 'Benutzername muss mindestens 3 Zeichen lang sein.'
+      this.showError = true;
     } else if (this.authForm.value.password.length < 8) {
-      this.errorMessage = 'Passwort muss mindestens 8 Buchstaben enthalten.'
+      this.errorMessage = 'Passwort muss mindestens 8 Zeichen lang sein.'
       this.showError = true;
     } else if (this.authForm.value.password !== this.authForm.get('confirmPassword')?.value) {
       this.errorMessage = 'Passwörter stimmen nicht überein.'
