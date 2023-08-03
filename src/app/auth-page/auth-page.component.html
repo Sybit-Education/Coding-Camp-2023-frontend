@@ -16,47 +16,27 @@
                         <div *ngIf="isRegistration" class="form-group col-12">
                             <label for="confirmPassword">Passwort wiederholen: </label>
                             <input id="confirmPassword" type="password" class="form-control" formControlName="confirmPassword">
-                        </div>      
-                    </form>
-                    
-                    <div *ngIf="isRegistration; else isLogin" class="text-center">
-                        <p class="password-error-message" *ngIf="showError">{{ errorMessage }}</p>
-                        <button (click)="register()" class="btn btn-primary submit-button" [disabled]="authForm.invalid">Account erstellen</button>
-                        <div class="change">
-                            <p>Du hast schon einen Sygotchi-Account?
-                                <button (click)="changeView()" class="btn btn-link">Zurück zum Login</button>        
-                            </p>
-                            <a style="margin-right: 5px;" routerLink="/impressum">
-                                <span>Impressum</span>
-                            </a>
-                            <a style="margin-right: 5px;" routerLink="/dsgvo">
-                                <span>Datenschutz</span>
-                            </a>       
                         </div>
 
-
-                      <div *ngIf="isRegistration; else isLogin" class="text-center col-12">
-                          <p class="text-danger" *ngIf="showError">{{ errorMessage }}</p>
-                          <button (click)="register()" class="btn btn-primary submit-button " type="submit" [disabled]="authForm.invalid">Account erstellen</button>
-                          <div class="change">
-                              <p>Du hast schon einen Sygotchi-Account?
-                              </p>
-                              <button (click)="changeView()" class="btn btn-link">Zurück zum Login</button>
-                          </div>
-                      </div>
-                      <ng-template #isLogin>
-                          <div class="text-center col-12">
+                        <div *ngIf="isRegistration; else isLogin" class="text-center col-12">
                             <p class="text-danger" *ngIf="showError">{{ errorMessage }}</p>
-                            <button (click)="login()" class="btn btn-primary submit-button " type="submit">Login</button>
-                              <div class="change">
-                              <p>
-                                Noch keinen Sygotchi-Account?
-                              </p>
-                              <button (click)="changeView()" class="btn btn-link">Account erstellen</button>
+                            <button (click)="register()" class="btn btn-primary submit-button " type="submit" [disabled]="authForm.invalid">Account erstellen</button>
+                            <div class="change">
+                                <span>Du hast schon einen Sygotchi-Account?</span><br>
+                                <button (click)="changeView()" class="btn btn-link">Zurück zum Login</button>
                             </div>
-                          </div>
-                      </ng-template>
-                  </form>
+                        </div>
+                        <ng-template #isLogin>
+                            <div class="text-center col-12">
+                                <p class="text-danger" *ngIf="showError">{{ errorMessage }}</p>
+                                <button (click)="login()" class="btn btn-primary submit-button " type="submit">Login</button>
+                                <div class="change">
+                                    <span>Noch keinen Sygotchi-Account?</span><br>
+                                    <button (click)="changeView()" class="btn btn-link">Account erstellen</button>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </form>
                 </div>
             </div>
         </div>
