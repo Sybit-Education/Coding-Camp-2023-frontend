@@ -75,7 +75,7 @@ export class AuthPageComponent implements OnInit {
             this.store.dispatch(setSygotchi({sygotchi: result as SyGotchi}))
               this.wsService.initializeWebSocketConnection(result.id)
 
-              this.router.navigate(['/sleep'])
+              this.router.navigate(['/bedroom'])
           },
             () => {
             this.router.navigate(['/create'])

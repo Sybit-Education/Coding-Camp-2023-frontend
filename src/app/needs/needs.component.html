@@ -1,34 +1,54 @@
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Bedürfnisse</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-      <div class="row">
-        <div class="col-12 mb-3" *ngFor="let need of needs">
-          <div class="row align-items-center">
-            <div class="col-2 text-center">
-              <i *ngIf="need.icon" [ngClass]="need.icon"></i>
-            </div>
-            <div class="col-10">
-                <label class="mt-2">{{need.label}}</label>
-              <div class="progress w-100 mt-2">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  [style.width.%]="need.progress"
-                  [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
+<div>
+  <div class="row">
+    <div class="col-6 mb-3">
+      <div class="row align-items-center" *ngFor="let need of needsLeft">
+        <div class="col-2 text-center">
+          <i *ngIf="need.icon" [ngClass]="need.icon"></i>
+        </div>
+        <div class="col-10">
+          <div class="d-flex align-items-center">
+            <div class="w-50 me-2">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" [style.width.%]="need.progress"
+                     [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
                 </div>
               </div>
             </div>
+            <label>{{ need.progress }}%</label>
           </div>
         </div>
       </div>
-    <label>Stimmung:
-      <i class="fa-regular fa-lg" [ngClass]="mood">
-
-      </i>
-    </label>
+    </div>
+    <div class="col-6 mb-3">
+      <div class="row align-items-center" *ngFor="let need of needsRight">
+        <div class="col-2 text-center">
+          <i *ngIf="need.icon" [ngClass]="need.icon"></i>
+        </div>
+        <div class="col-10">
+          <div class="d-flex align-items-center">
+            <div class="w-50 me-2">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" [style.width.%]="need.progress"
+                     [ngStyle]="{'background-color': need.progress >= 75 ? 'green': need.progress >= 50 ? 'yellow': need.progress >= 25 ? 'orange': 'red'}">
+                </div>
+              </div>
+            </div>
+            <label>{{ need.progress }}%</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label>Stimmung:
+          <i class="fa-regular fa-lg" [ngClass]="mood"></i>
+        </label>
+        <br>
+        <label>Rang:
+          <span>
+            {{ sygotchi.rank }}
+            <i class="fa-solid fa-trophy"></i>
+          </span>
+        </label>
+      </div>
+    </div>
   </div>
-</ng-template>
-<button class="btn btn-primary" (click)="open(content)">Bedürfnisse</button>
+</div>
