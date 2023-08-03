@@ -11,7 +11,7 @@ import { setSygotchi } from '../store/sygotchi.actions';
   styleUrls: ['./kitchen.component.scss']
 })
 export class KitchenComponent implements OnInit{
-  isHungry: number = 50
+  isHungry: number
   isThirsty: number
   message = {text: '', error: false}
   sygotchi: SyGotchi
@@ -23,16 +23,14 @@ export class KitchenComponent implements OnInit{
     this.store.select(selectSygotchi)
       .subscribe(
         syGotchi => {
-          //this.isHungry = syGotchi.hunger
+          this.isHungry = syGotchi.hunger
           this.isThirsty = syGotchi.thirst
           this.sygotchi = syGotchi
         }
       )
   }
   feed(){
-    console.log('sdsdvf')
     if(this.isHungry <= 90){
-      console.log('sdf')
       this.actionsService.feedSygotchi()
       .subscribe
       (res => {
@@ -51,13 +49,13 @@ export class KitchenComponent implements OnInit{
     if(this.isThirsty <= 90){
       this.actionsService.drinkSygotchi().subscribe
       (res => {
-        this.message.text = 'Sygotchi ist jetzt satt!'
+        this.message.text = 'Sygotchi ist jetzt sitt!'
         this.messageHandler()
         this.store.dispatch(setSygotchi({sygotchi: res as SyGotchi}))
       },
       () => {
         this.message.error = true
-        this.message.text = 'Sygotchi hat keinen Hunger mehr!'
+        this.message.text = 'Sygotchi hat keinen Durst mehr!'
         this.messageHandler()
       })
     }
