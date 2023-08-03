@@ -1,32 +1,27 @@
-<nav class="navbar navbar-expand-ng navbar-light bg-light">
-    <div class="container-fluid">
-        <a routerLink="/auth">
-             <img alt="Sygotchi-logo" class="logo" src="assets/images/sygotchi-logo.png">
-        </a>
-        <ul class="navbar-nav ms-auto flex-row justify-content-between">
-            <div ngbDropdown class="d-inline-blog" display="dynamic">
-                <a type="butoon" class="d-flex align-items-center nav-link" id="dropdownConfig" ngbDropdownToggle>
-                    Sonstige
-                </a>
-                <div ngbDropdownMenu aria-labelledby="dropdownConfig">
-                    <a ngbDropdownItem routerLink="/impressum">
-                        <i class="fa-solid fa-stamp"></i>
-                        <span>Impressum</span>
-                    </a>
-                    <a ngbDropdownItem routerLink="/dsgvo">
-                        <i class="fa-solid fa-server"></i>
-                        <span>Datenschutz</span>
-                    </a>
-                    <a ngbDropdownItem routerLink="team-site">
-                        <i class="fa-solid fa-users"></i>
-                        <span>Über uns</span>
-                    </a>
-                    <a ngbDropdownItem routerLink="/login">
-                      <i class="fa-solid fa-right-from-bracket"></i>
-                      <span>Logout</span>
-                    </a>
-                </div>
-            </div>
-        </ul>
+<nav class="navbar fixed-top navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">
+      <img alt="Sygotchi-logo" class="logo" src="assets/images/sygotchi-logo.png">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <span class="d-flex me-auto"></span>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a ngbDropdownItem routerLink="/team-site">
+            <i class="fa-solid fa-users"></i>
+            <span>Über uns</span>
+          </a>
+        </li>
+        <li class="nav-item me-auto">
+          <a ngbDropdownItem routerLink="/login">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
