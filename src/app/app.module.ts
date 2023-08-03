@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { SygotchiCleanComponent } from './sygotchi-clean/sygotchi-clean.component';
 import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
 import { FooterComponent } from './footer/footer.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FooterComponent } from './footer/footer.component';
     SleepSceneComponent,
     NeedsComponent,
     SygotchiCleanComponent,
-    FooterComponent
+    FooterComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
