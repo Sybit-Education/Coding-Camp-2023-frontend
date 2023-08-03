@@ -21,7 +21,6 @@ export class SygotchiCleanComponent implements OnInit {
   ngOnInit(): void {
       this.store.select(selectSygotchi).subscribe(SyGotchi => {
         this.isDirty = SyGotchi.dirty
-        console.log(SyGotchi.dirty)
         this.sygotchi = SyGotchi
       })
   }

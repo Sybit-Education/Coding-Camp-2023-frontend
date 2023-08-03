@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {AuthInterceptor} from "./misc/auth.interceptor";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { AuthInterceptor} from "./misc/auth.interceptor";
 import { AuthPageComponent } from './auth-page/auth-page.component';
-import {RouterModule, RouterOutlet} from "@angular/router";
-import {ReactiveFormsModule} from "@angular/forms";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {APP_ROUTES} from "./misc/app.routes";
-import {StoreModule} from "@ngrx/store";
-import {sygotchiReducer} from "./store/sygotchi.reducer";
+import { RouterModule, RouterOutlet } from "@angular/router";
+import { ReactiveFormsModule } from "@angular/forms";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { APP_ROUTES } from "./misc/app.routes";
+import { StoreModule } from "@ngrx/store";
+import { sygotchiReducer } from "./store/sygotchi.reducer";
 import { LogoComponent } from './logo/logo.component';
 import { TeamSComponent } from './team-s/team-s.component';
 import { DsgvoPageComponent } from './dsgvo-page/dsgvo-page.component';
@@ -21,8 +21,11 @@ import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstel
 import { HeaderComponent } from './header/header.component';
 import { SygotchiCleanComponent } from './sygotchi-clean/sygotchi-clean.component';
 import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
+import { KitchenComponent } from './kitchen/kitchen.component';
 import { FooterComponent } from './footer/footer.component';
 import { HowToPlayComponent } from './how-to-play/how-to-play.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +39,14 @@ import { HowToPlayComponent } from './how-to-play/how-to-play.component';
     SygotchiErstellenComponent,
     HeaderComponent,
     SleepSceneComponent,
+    ImpressumComponent,
+    NeedsComponent,
+    KitchenComponent,
     NeedsComponent,
     SygotchiCleanComponent,
     FooterComponent,
-    HowToPlayComponent
+    HowToPlayComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,13 @@ import { HowToPlayComponent } from './how-to-play/how-to-play.component';
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
     NgbModule,
-    StoreModule.forRoot({ sygotchi: sygotchiReducer })
+    StoreModule.forRoot({ sygotchi: sygotchiReducer }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
