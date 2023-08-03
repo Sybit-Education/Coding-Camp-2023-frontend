@@ -1,9 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { SyGotchi } from '../entities/syGotchi';
-import { ActionsService } from '../services/actions.service';
-import { Store } from '@ngrx/store';
-import { selectSygotchi } from '../store/sygotchi.selectors';
-import { setSygotchi } from '../store/sygotchi.actions';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-sygotchi-clean',

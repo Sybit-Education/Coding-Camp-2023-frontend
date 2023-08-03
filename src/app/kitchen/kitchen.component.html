@@ -1,11 +1,15 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
 <div class="container_all">
-    <aside>
-        <button (click)="feed()" class="btn w-100"><span class="material-symbols-outlined">restaurant</span></button>
-        <button (click)="drink()" class="btn w-100"><span class="material-symbols-outlined">water_full</span></button>
-    </aside>
-    <main>
+    <div class="main">
+        <button class="btn">&#10094;</button>
         <app-show-sygotchi></app-show-sygotchi>
-    </main>
+        <button class="btn">&#10095;</button>
+    </div>
+    <div class="aside">
+        <div class="needs">
+            <app-needs></app-needs>
+        </div>
+        <div class="clean">
+            <app-kitchen-function></app-kitchen-function>
+        </div>
+    </div>
 </div>

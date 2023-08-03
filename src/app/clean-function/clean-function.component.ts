@@ -25,8 +25,6 @@ export class CleanFunctionComponent implements OnInit {
       })
   }
   clean(){
-    
-    console.log("🚀 ~ file: clean-function.component.ts:29 ~ CleanFunctionComponent ~ clean ~ 1:", 1)
     if(this.isDirty <= 50){
       this.actionsService.clean().subscribe(res => {
         this.message.text = 'Sygotchi ist nun sauber!'
