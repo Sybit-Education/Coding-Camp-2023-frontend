@@ -9,6 +9,7 @@ import { SygotchiCleanComponent } from "../sygotchi-clean/sygotchi-clean.compone
 import {SleepSceneComponent} from "../sleep-scene/sleep-scene.component";
 import { KitchenComponent } from "../kitchen/kitchen.component";
 import { ErrorPageComponent } from "../error-page/error-page.component";
+import { BedroomComponent } from "../bedroom/bedroom.component";
 
 export const APP_ROUTES: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -16,11 +17,11 @@ export const APP_ROUTES: Routes = [
   {path: 'create', component: SygotchiErstellenComponent, canActivate: [AuthGuard]},
   {path: 'team-site', component: TeamSComponent},
   {path: 'dsgvo', component: DsgvoPageComponent},
-  {path: 'clean', component: SygotchiCleanComponent},
   {path: 'impressum', component: ImpressumComponent},
   {path: 'bathroom', component: SygotchiCleanComponent, canActivate: [AuthGuard]},
   {path: 'sleep', component: SleepSceneComponent, canActivate: [AuthGuard]},
   {path: 'kitchen', component: KitchenComponent, canActivate: [AuthGuard]},
+  {path: 'bedroom', component: BedroomComponent, canActivate: [AuthGuard]},
   {path: 'error', component: ErrorPageComponent},
   {path: '**', redirectTo: 'error' }
 ]

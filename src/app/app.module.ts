@@ -27,6 +27,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { CleanFunctionComponent } from './clean-function/clean-function.component';
 import { KitchenFunctionComponent } from './kitchen-function/kitchen-function.component';
+import { BedroomComponent } from './bedroom/bedroom.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { KitchenFunctionComponent } from './kitchen-function/kitchen-function.co
     FooterComponent,
     ErrorPageComponent,
     CleanFunctionComponent,
-    KitchenFunctionComponent
+    KitchenFunctionComponent,
+    BedroomComponent
   ],
   imports: [
     BrowserModule,

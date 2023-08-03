@@ -1,8 +1,7 @@
 <div *ngIf="showMessage">
   <span class="message"> {{message.text}} </span>
 </div>
-<app-show-sygotchi></app-show-sygotchi>
-<button (click)="onSleep()" class="btn btn-primary">
+<button (click)="onSleep()" class="btn btn-primary w-100">
   <div *ngIf="isAsleep;else goSleep">
     <span>Aufwachen</span>
   </div>
