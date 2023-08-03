@@ -21,6 +21,7 @@ import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstel
 import { HeaderComponent } from './header/header.component';
 import { SygotchiCleanComponent } from './sygotchi-clean/sygotchi-clean.component';
 import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
+import { FooterComponent } from './footer/footer.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     HeaderComponent,
     SleepSceneComponent,
     NeedsComponent,
-    SygotchiCleanComponent
+    SygotchiCleanComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
