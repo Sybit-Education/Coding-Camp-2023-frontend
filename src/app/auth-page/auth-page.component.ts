@@ -53,7 +53,7 @@ export class AuthPageComponent implements OnInit {
         error => {
           if (error.status === HttpStatusCode.Unauthorized) {
             this.errorMessage = 'Benutzername wird bereits verwendet.'
-          } else if (error.error) {
+          } else if (rror.error && error.error.status && error.error.title && error.error.detail) {
             this.errorMessage = 'Unerwarteter Fehler: ' + error.error.status + ' ' + error.error.title + ' ' + error.error.detail;
           } else {
             this.errorMessage = 'Unerwarteter Fehler'
@@ -84,7 +84,7 @@ export class AuthPageComponent implements OnInit {
       error => {
         if (error.status === HttpStatusCode.BadRequest) {
           this.errorMessage = 'Benutzername / Passwort ist falsch.'
-        } else if (error.error) {
+        } else if (error.error && error.error.status && error.error.title && error.error.detail) {
           this.errorMessage = 'Unerwarteter Fehler: ' + error.error.status + ' ' + error.error.title + ' ' + error.error.detail;
         } else {
           this.errorMessage = 'Unerwarteter Fehler'
