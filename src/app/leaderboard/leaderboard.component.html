@@ -17,7 +17,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let sygotchi of sygotchis; let i = index" [ngClass]="getTableRowBackground(i + 1)">
+            <tr *ngFor="let sygotchi of sygotchis">
               <td>{{sygotchi.rank}}</td>
               <td>{{sygotchi.name}}</td>
               <td>{{sygotchi.createdAt | date}}</td>
@@ -29,9 +29,9 @@
         </table>
       </div>
     </ng-template>
-  
+
     <a (click)="open(content)" class="d-flex align-items-center nav-link modal-link">
       <i class="fa-solid fa-ranking-star"></i>
       <span>Bestenliste</span>
     </a>
-  </div>  
+  </div>
