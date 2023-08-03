@@ -26,6 +26,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HowToPlayComponent } from './how-to-play/how-to-play.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { CleanFunctionComponent } from './clean-function/clean-function.component';
+import { KitchenFunctionComponent } from './kitchen-function/kitchen-function.component';
+import { BedroomComponent } from './bedroom/bedroom.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,10 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     NeedsComponent,
     SygotchiCleanComponent,
     FooterComponent,
+    ErrorPageComponent,
+    CleanFunctionComponent,
+    KitchenFunctionComponent,
+    BedroomComponent,
     HowToPlayComponent,
     ErrorPageComponent
   ],
