@@ -21,6 +21,9 @@
             <span>Hilfe</span>
           </a>
         </li>
+        <li class="nav-item leaderboard">
+          <app-leaderboard></app-leaderboard>
+        </li>
         <li class="nav-item me-auto">
           <a ngbDropdownItem routerLink="/auth" *ngIf="authService.isAuthenticated()">
             <i class="fa-solid fa-right-from-bracket"></i>
