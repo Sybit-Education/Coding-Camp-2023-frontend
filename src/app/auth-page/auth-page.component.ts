@@ -31,7 +31,7 @@ export class AuthPageComponent implements OnInit {
   }
 
   register() {
-    if (!this.authForm.value.username.match(/^[A-Za-z0-9-_].$/gm)) {
+    if (!this.authForm.value.username.match(/^[A-Za-z0-9-_]*$/gm)) {
       this.errorMessage = 'Benutzername darf nur Buchstaben, Zahlen und Bindestriche sowie Unterstriche enthalten.'
       this.showError = true;
     } else if (this.authForm.value.username.length < 3) {
