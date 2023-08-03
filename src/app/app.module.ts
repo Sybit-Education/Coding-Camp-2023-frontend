@@ -23,6 +23,7 @@ import { SygotchiCleanComponent } from './sygotchi-clean/sygotchi-clean.componen
 import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
 import { KitchenComponent } from './kitchen/kitchen.component';
 import { FooterComponent } from './footer/footer.component';
+import { HowToPlayComponent } from './how-to-play/how-to-play.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { CleanFunctionComponent } from './clean-function/clean-function.component';
@@ -50,7 +51,9 @@ import { BedroomComponent } from './bedroom/bedroom.component';
     ErrorPageComponent,
     CleanFunctionComponent,
     KitchenFunctionComponent,
-    BedroomComponent
+    BedroomComponent,
+    HowToPlayComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
