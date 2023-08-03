@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-  constructor(public route: Router){}
+  constructor(public route: Router, public authService: AuthService){}
 
   checkLogin(){
     if(localStorage.token){
