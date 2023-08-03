@@ -25,6 +25,7 @@ import { KitchenComponent } from './kitchen/kitchen.component';
 import { FooterComponent } from './footer/footer.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { CleanFunctionComponent } from './clean-function/clean-function.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     NeedsComponent,
     SygotchiCleanComponent,
     FooterComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    CleanFunctionComponent
   ],
   imports: [
     BrowserModule,

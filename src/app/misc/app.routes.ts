@@ -18,7 +18,7 @@ export const APP_ROUTES: Routes = [
   {path: 'dsgvo', component: DsgvoPageComponent},
   {path: 'clean', component: SygotchiCleanComponent},
   {path: 'impressum', component: ImpressumComponent},
-  {path: 'clean', component: SygotchiCleanComponent, canActivate: [AuthGuard]},
+  {path: 'bathroom', component: SygotchiCleanComponent, canActivate: [AuthGuard]},
   {path: 'sleep', component: SleepSceneComponent, canActivate: [AuthGuard]},
   {path: 'kitchen', component: KitchenComponent, canActivate: [AuthGuard]},
   {path: 'error', component: ErrorPageComponent},
