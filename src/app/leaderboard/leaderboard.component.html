@@ -4,19 +4,17 @@
     <tr>
       <th scope="col">Rang</th>
       <th scope="col">Name</th>
-      <th scope="col">Erstellt am</th>
+      <th scope="col">Erstellt</th>
       <th scope="col">Punkte</th>
-      <th scope="col">Status</th>
       <th scope="col">Besitzer</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let sygotchi of sygotchis; let i = index" [ngClass]="getTableRowBackground(i + 1)">
-      <td>{{sygotchi.rank}}</td>
+      <td>{{i}}</td>
       <td>{{sygotchi.name}}</td>
-      <td>{{sygotchi.createdAt | date}}</td>
+      <td>{{sygotchi.createdAt | date: 'dd.MM.yy'}}</td>
       <td>{{sygotchi.score}}</td>
-      <td>{{sygotchi.dead | alive}}</td>
       <td>{{sygotchi.owner.username}}</td>
     </tr>
     </tbody>

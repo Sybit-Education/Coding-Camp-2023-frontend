@@ -24,7 +24,6 @@ import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
 import { KitchenComponent } from './kitchen/kitchen.component';
 import { FooterComponent } from './footer/footer.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
-import { AlivePipe } from './pipes/alive.pipe';
 import { HowToPlayComponent } from './how-to-play/how-to-play.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ErrorPageComponent } from './error-page/error-page.component';
@@ -53,8 +52,7 @@ import { BedroomComponent } from './bedroom/bedroom.component';
     KitchenFunctionComponent,
     BedroomComponent,
     HowToPlayComponent,
-    LeaderboardComponent,
-    AlivePipe
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
