@@ -1,7 +1,7 @@
 
 .container_all{
-    background-color: #EFD3D2;
-    display: flex; 
+    background-color: #F8F9FA;
+    display: flex;
     flex-direction: column;
     margin: 0;
     padding: 0;
@@ -23,7 +23,7 @@
         height: 30vh;
     }
 }
-@media screen and (orientation:landscape) { 
+@media screen and (orientation:landscape) {
     .container_all{
         flex-direction: row-reverse;
         justify-content: space-between;
