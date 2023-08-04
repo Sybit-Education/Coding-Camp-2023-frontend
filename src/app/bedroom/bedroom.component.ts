@@ -15,17 +15,19 @@ export class BedroomComponent implements OnInit{
     this.store.select(selectSygotchi)
         .subscribe(
           syGotchi => {
-            this.isAsleep = syGotchi.sleeping
+            if(syGotchi) {
+              this.isAsleep = syGotchi.sleeping
+            }
           }
         )
   }
   left(){
-    if(this.isAsleep == false){
+    if(!this.isAsleep){
       this.router.navigate(['/bathroom'])
     }
   }
   right(){
-    if(this.isAsleep == false){
+    if(!this.isAsleep){
       this.router.navigate(['/gym'])
     }
   }

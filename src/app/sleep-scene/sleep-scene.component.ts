@@ -22,8 +22,10 @@ export class SleepSceneComponent implements OnInit {
     this.store.select(selectSygotchi)
       .subscribe(
         syGotchi => {
-          this.isAsleep = syGotchi?.sleeping ? true : false
-          this.sygotchi = syGotchi
+          if(syGotchi) {
+            this.isAsleep = syGotchi.sleeping
+            this.sygotchi = syGotchi
+          }
         }
       )
   }
@@ -65,6 +67,7 @@ export class SleepSceneComponent implements OnInit {
   messageHandler() {
     if(!this.showMessage){
       this.showMessage = true
+      console.log(this.showMessage)
       setTimeout(() => {
         this.showMessage = false
       }, 7000)

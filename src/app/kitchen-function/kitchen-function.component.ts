@@ -25,16 +25,18 @@ export class KitchenFunctionComponent implements OnInit{
     this.store.select(selectSygotchi)
       .subscribe(
         syGotchi => {
-          this.isHungry = syGotchi.hunger
-          this.isThirsty = syGotchi.thirst
-          this.feedCooldown = syGotchi.feedCooldown
-          this.drinkCooldown = syGotchi.drinkCooldown
-          this.sygotchi = syGotchi
+          if(syGotchi) {
+            this.isHungry = syGotchi.hunger
+            this.isThirsty = syGotchi.thirst
+            this.feedCooldown = syGotchi.feedCooldown
+            this.drinkCooldown = syGotchi.drinkCooldown
+            this.sygotchi = syGotchi
+          }
         }
       )
   }
   feed(){
-    
+
     if(this.isHungry <= 90){
       if(this.feedCooldown > -1){
         this.message.error = true
@@ -55,7 +57,7 @@ export class KitchenFunctionComponent implements OnInit{
           this.messageHandler()
       })
       }
-      
+
     }else{
       this.message.error = true
       this.message.text = 'Sygotchi hat keinen Hunger!'
@@ -82,7 +84,7 @@ export class KitchenFunctionComponent implements OnInit{
           this.messageHandler()
       })
       }
-      
+
     }else{
       this.message.error = true
           this.message.text = 'Sygotchi hat keinen Durst!'
@@ -92,6 +94,7 @@ export class KitchenFunctionComponent implements OnInit{
   messageHandler() {
     if(!this.showMessage){
       this.showMessage = true
+      console.log(this.showMessage)
       setTimeout(() => {
         this.showMessage = false
       }, 7000)
