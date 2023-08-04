@@ -6,6 +6,18 @@
 .warning-text {
   color: red;
 }
+.center {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.flex{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .modal-title {
   position: relative;
@@ -14,4 +26,13 @@
 
 .progress {
   height: 7px;
+}
+@media screen and (max-width: 978px) {
+  
+  
+}
+@media screen and (orientation:landscape) { 
+.center{
+      margin-top: 100px;
+  }
 }
