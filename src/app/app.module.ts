@@ -31,6 +31,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { CleanFunctionComponent } from './clean-function/clean-function.component';
 import { KitchenFunctionComponent } from './kitchen-function/kitchen-function.component';
 import { BedroomComponent } from './bedroom/bedroom.component';
+import { GymComponent } from './gym/gym.component';
+import { GymFunctionComponent } from './gym-function/gym-function.component';
 
 @NgModule({
   declarations: [
@@ -48,13 +50,15 @@ import { BedroomComponent } from './bedroom/bedroom.component';
     KitchenComponent,
     SygotchiCleanComponent,
     FooterComponent,
-    ErrorPageComponent,
     CleanFunctionComponent,
     KitchenFunctionComponent,
     BedroomComponent,
     HowToPlayComponent,
     LeaderboardComponent,
-    AlivePipe
+    AlivePipe,
+    ErrorPageComponent,
+    GymComponent,
+    GymFunctionComponent
   ],
   imports: [
     BrowserModule,
