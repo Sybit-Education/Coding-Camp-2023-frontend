@@ -38,12 +38,19 @@ export class CleanFunctionComponent implements OnInit {
       }
 
       )
+    }else{
+      this.message.Error = true
+        this.message.text = "Sygotchi ist nicht dreckig genug!"
+        this.messageHandler()  
     }
   }
   messageHandler() {
-    this.showMessage = true
-    setTimeout(() => {
-      this.showMessage = false
-    }, 7000)
+    if(!this.showMessage){
+      this.showMessage = true
+      console.log(this.showMessage)
+      setTimeout(() => {
+        this.showMessage = false
+      }, 7000)
+    }
   }
 }

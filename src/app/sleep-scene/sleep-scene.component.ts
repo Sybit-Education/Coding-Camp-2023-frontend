@@ -63,10 +63,12 @@ export class SleepSceneComponent implements OnInit {
   }
 
   messageHandler() {
-    this.showMessage = true
-
-    setTimeout(() => {
-      this.showMessage = false
-    }, 7000)
+    if(!this.showMessage){
+      this.showMessage = true
+      console.log(this.showMessage)
+      setTimeout(() => {
+        this.showMessage = false
+      }, 7000)
+    }
   }
 }

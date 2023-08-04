@@ -17,12 +17,9 @@ export class NeedsComponent {
 
   needsLeft = [
     { label: 'Hunger', icon: 'fa-solid fa-drumstick-bite fa-lg', progress: 0 },
+    { label: 'Durst', icon: 'fa-solid fa-glass-water fa-lg', progress: 0 },
     { label: 'Hygiene', icon: 'fa-solid fa-bath fa-lg', progress: 0 },
     { label: 'Müde', icon: 'fa-solid fa-battery-full fa-lg', progress: 0 },
-  ]
-
-  needsRight = [
-    { label: 'Durst', icon: 'fa-solid fa-glass-water fa-lg', progress: 0 },
     { label: 'Gelangweilt', icon: 'fa-solid fa-user-group fa-lg', progress: 0 },
   ]
 
@@ -32,10 +29,10 @@ export class NeedsComponent {
 
       if (this.sygotchi) {
         this.needsLeft[0].progress = parseInt(this.sygotchi.hunger.toString())
-        this.needsRight[0].progress = parseInt(this.sygotchi.thirst.toString())
-        this.needsLeft[1].progress = parseInt(this.sygotchi.dirty.toString())
-        this.needsRight[1].progress = parseInt(this.sygotchi.tired.toString())
-        this.needsLeft[2].progress = parseInt(this.sygotchi.bored.toString())
+        this.needsLeft[1].progress = parseInt(this.sygotchi.thirst.toString())
+        this.needsLeft[2].progress = parseInt(this.sygotchi.dirty.toString())
+        this.needsLeft[3].progress = parseInt(this.sygotchi.tired.toString())
+        this.needsLeft[4].progress = parseInt(this.sygotchi.bored.toString())
         this.moodIconSelector(this.sygotchi.mood)
       }
     })
