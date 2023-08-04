@@ -1,25 +1,23 @@
 
 .container_all{
-    display:grid; 
-    grid-template-columns: 1fr 2fr;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 100vw;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px;
+    margin-bottom: 20;
+
     main{
-        background-color: #FBD189;
+      background-color: #eeeeee;
         display: flex;
         justify-content: center;
         align-items: center;
-        
     }
     aside{
         padding: 30px;
-        background-color: #EFD3D2;
+        background-color: #e7e7e7;
        .color-container{
         display:flex;
         justify-content: space-evenly;
-        
+
        }
     }
 }
@@ -33,5 +31,5 @@
             grid-row: 2;
         }
     }
-    
+
 }
