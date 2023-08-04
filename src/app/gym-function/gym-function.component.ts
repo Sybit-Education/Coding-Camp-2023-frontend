@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { SyGotchi } from '../entities/syGotchi';
 import { ActionsService } from '../services/actions.service';
 import { Store } from '@ngrx/store';
@@ -16,6 +16,7 @@ export class GymFunctionComponent implements OnInit {
   message = {text: '', error: false}
   sygotchi: SyGotchi
   showMessage: boolean = false
+  cooldown: number
 
   constructor(private actionsService: ActionsService, private store: Store) {}
 
@@ -57,9 +58,8 @@ export class GymFunctionComponent implements OnInit {
       this.message.error = true
         this.message.text = 'Dein Sygotchi ist zu müde und kann nicht mehr trainieren.'
         this.messageHandler()
-      })
+      }
     }
-  }
 
   messageHandler() {
     this.showMessage = true
