@@ -1,2 +1,6 @@
+<div class="message">
+    <div *ngIf="showMessage">
+    <span class="message"> {{message.text}} </span>
+    </div>
+</div>
 <button class="btn btn-primary w-100" (click)="train()">Trainieren</button>
-<span class="message"> {{message.text}} </span>

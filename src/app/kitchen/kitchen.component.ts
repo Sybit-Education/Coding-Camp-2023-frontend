@@ -13,7 +13,7 @@ export class KitchenComponent{
 
   }
   left(){
-    this.router.navigate(['/bedroom'])
+    this.router.navigate(['/gym'])
 
   }
   right(){
