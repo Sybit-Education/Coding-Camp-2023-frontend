@@ -5,7 +5,10 @@
 </div>
 <button (click)="onSleep()" class="btn btn-primary w-100">
   <div *ngIf="isAsleep;else goSleep">
-    <span>Aufwachen</span>
+    <span>
+      <i class="fa-solid fa-bed"></i>
+      Aufwachen
+    </span>
   </div>
   <ng-template #goSleep>
     <span>Schlafen</span>
