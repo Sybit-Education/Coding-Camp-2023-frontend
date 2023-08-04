@@ -29,8 +29,8 @@
         </label>
         <br>
         <label>Rang:
-          <span>
-            {{ sygotchi.rank + 1}}
+          <span *ngIf="sygotchi">
+            {{ sygotchi.rank + 1 }}
             <i class="fa-solid fa-trophy"></i>
           </span>
         </label>
