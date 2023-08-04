@@ -48,7 +48,9 @@ export class AuthPageComponent implements OnInit {
         result => {
           localStorage.setItem('token', result["token"])
           localStorage.setItem('id', result["id"])
+          alert('Sie haben sich erfolgreich Registriert')
           this.router.navigate(['/create']);
+
         },
         error => {
           if (error.status === HttpStatusCode.Unauthorized) {
