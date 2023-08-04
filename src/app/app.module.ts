@@ -50,13 +50,12 @@ import { GymFunctionComponent } from './gym-function/gym-function.component';
     KitchenComponent,
     SygotchiCleanComponent,
     FooterComponent,
-    ErrorPageComponent,
     CleanFunctionComponent,
     KitchenFunctionComponent,
     BedroomComponent,
     HowToPlayComponent,
     LeaderboardComponent,
-    AlivePipe
+    AlivePipe,
     ErrorPageComponent,
     GymComponent,
     GymFunctionComponent
