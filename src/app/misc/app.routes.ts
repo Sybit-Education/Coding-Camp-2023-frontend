@@ -11,6 +11,7 @@ import { KitchenComponent } from "../kitchen/kitchen.component";
 import { ErrorPageComponent } from "../error-page/error-page.component";
 import { BedroomComponent } from "../bedroom/bedroom.component";
 import {LeaderboardComponent} from "../leaderboard/leaderboard.component";
+import { GymComponent } from "../gym/gym.component";
 
 export const APP_ROUTES: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -23,6 +24,7 @@ export const APP_ROUTES: Routes = [
   {path: 'kitchen', component: KitchenComponent, canActivate: [AuthGuard]},
   {path: 'bedroom', component: BedroomComponent, canActivate: [AuthGuard]},
   {path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard]},
+  {path: 'gym', component: GymComponent, canActivate: [AuthGuard]},
   {path: 'how-to-play', component: HowToPlayComponent},
   {path: 'error', component: ErrorPageComponent},
   {path: '**', redirectTo: 'error' }
