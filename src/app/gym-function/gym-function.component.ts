@@ -40,7 +40,7 @@ export class GymFunctionComponent {
       },
       () => {
         this.message.error = true
-        this.message.text = 'Sygotchi hat genug trainiert!'
+        this.message.text = 'Dein Sygotchi kann nicht mehr trainieren.'
         this.messageHandler()
       })
     }
