@@ -54,7 +54,7 @@ export class GymFunctionComponent {
       
     }else{
       this.message.error = true
-        this.message.text = 'Dein Sygotchi ist zu müde kann nicht mehr trainieren.'
+        this.message.text = 'Dein Sygotchi ist zu müde und kann nicht mehr trainieren.'
         this.messageHandler()
     }
   }

@@ -56,6 +56,10 @@ export class KitchenFunctionComponent implements OnInit{
       })
       }
       
+    }else{
+      this.message.error = true
+      this.message.text = 'Sygotchi hat keinen Hunger!'
+      this.messageHandler()
     }
   }
   drink(){
@@ -79,6 +83,10 @@ export class KitchenFunctionComponent implements OnInit{
       })
       }
       
+    }else{
+      this.message.error = true
+          this.message.text = 'Sygotchi hat keinen Durst!'
+          this.messageHandler()
     }
   }
   messageHandler() {
