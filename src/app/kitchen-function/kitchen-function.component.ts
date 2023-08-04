@@ -36,7 +36,7 @@ export class KitchenFunctionComponent implements OnInit{
   feed(){
     
     if(this.isHungry <= 90){
-      if(this.feedCooldown > 0){
+      if(this.feedCooldown > -1){
         this.message.error = true
         this.message.text = 'Du musst ' + this.feedCooldown + ' Minuten warten bis dein SyGotchi wieder essen kann'
         console.log(this.message.text)
@@ -60,7 +60,7 @@ export class KitchenFunctionComponent implements OnInit{
   }
   drink(){
     if(this.isThirsty <= 90){
-      if(this.drinkCooldown > 0){
+      if(this.drinkCooldown > -1){
         this.message.error = true
         this.message.text = 'Du musst ' + this.drinkCooldown + ' Minuten warten bis dein SyGotchi wieder trinken kann'
         console.log(this.message.text)

@@ -13,6 +13,7 @@ import { setSygotchi } from '../store/sygotchi.actions';
 export class GymFunctionComponent {
   isTired: number = 0
   isBored: number
+  cooldown: number
   message = {text: '', error: false}
   sygotchi: SyGotchi
   showMessage: boolean = false
@@ -25,24 +26,36 @@ export class GymFunctionComponent {
         syGotchi => {
           this.isTired = syGotchi.tired
           this.isBored = syGotchi.bored
+          this.cooldown = syGotchi.playCooldown
           this.sygotchi = syGotchi
         }
       )
   }
   train(){
     if(this.isTired >= 50 ){
-      this.actionsService.playWithSygotchi()
-      .subscribe
-      (res => {
-        this.message.text = 'Sygotchi hat erfolgreich trainiert!'
-        this.messageHandler()
-        this.store.dispatch(setSygotchi({sygotchi: res as SyGotchi}))
-      },
-      () => {
+      if(this.cooldown > -1){
         this.message.error = true
-        this.message.text = 'Dein Sygotchi kann nicht mehr trainieren.'
+        this.message.text = 'Du musst ' + this.cooldown + ' Minuten warten bis dein SyGotchi wieder trainieren kann'
         this.messageHandler()
-      })
+      }else{
+        this.actionsService.playWithSygotchi()
+        .subscribe
+        (res => {
+          this.message.text = 'Sygotchi hat erfolgreich trainiert!'
+          this.messageHandler()
+          this.store.dispatch(setSygotchi({sygotchi: res as SyGotchi}))
+        },
+        () => {
+          this.message.error = true
+          this.message.text = 'Dein Sygotchi kann nicht mehr trainieren.'
+          this.messageHandler()
+        })
+      }
+      
+    }else{
+      this.message.error = true
+        this.message.text = 'Dein Sygotchi ist zu müde kann nicht mehr trainieren.'
+        this.messageHandler()
     }
   }
 

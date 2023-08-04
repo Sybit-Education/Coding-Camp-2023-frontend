@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./bedroom.component.scss']
 })
 export class BedroomComponent {
- 
   constructor(public router:Router){
 
   }
@@ -16,7 +15,6 @@ export class BedroomComponent {
 
   }
   right(){
-    this.router.navigate(['/kitchen'])
-    
+    this.router.navigate(['/gym'])
   }
 }
