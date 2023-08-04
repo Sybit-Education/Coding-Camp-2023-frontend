@@ -25,7 +25,7 @@
           <i class="fa-regular fa-lg" [ngClass]="mood"></i>
         </label>
         <br>
-        <label>Rang:
+        <label *ngIf="sygotchi">Rang:
           <span>
             {{ sygotchi.rank }}
             <i class="fa-solid fa-trophy"></i>

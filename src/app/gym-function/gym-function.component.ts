@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { SyGotchi } from '../entities/syGotchi';
 import { ActionsService } from '../services/actions.service';
 import { Store } from '@ngrx/store';
@@ -10,7 +10,7 @@ import { setSygotchi } from '../store/sygotchi.actions';
   templateUrl: './gym-function.component.html',
   styleUrls: ['./gym-function.component.scss']
 })
-export class GymFunctionComponent {
+export class GymFunctionComponent implements OnInit {
   isTired: number = 0
   isBored: number
   message = {text: '', error: false}
@@ -23,9 +23,11 @@ export class GymFunctionComponent {
     this.store.select(selectSygotchi)
       .subscribe(
         syGotchi => {
-          this.isTired = syGotchi.tired
-          this.isBored = syGotchi.bored
-          this.sygotchi = syGotchi
+          if(syGotchi) {
+            this.isTired = syGotchi.tired
+            this.isBored = syGotchi.bored
+            this.sygotchi = syGotchi
+          }
         }
       )
   }
