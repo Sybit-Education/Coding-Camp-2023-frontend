@@ -22,7 +22,10 @@
           </a>
         </li>
         <li class="nav-item leaderboard">
-          <app-leaderboard></app-leaderboard>
+          <a ngbDropdownItem routerLink="/leaderboard" *ngIf="authService.isAuthenticated">
+            <i class="fa-solid fa-ranking-star"></i>
+            <span>Bestenliste</span>
+          </a>
         </li>
         <li class="nav-item me-auto">
           <a ngbDropdownItem routerLink="/auth" *ngIf="authService.isAuthenticated()">

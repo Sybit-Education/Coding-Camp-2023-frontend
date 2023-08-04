@@ -1,11 +1,52 @@
-span {
-  margin-left:  10px;
-  font-size: 1.3rem;
-}
-a {
-  font-size: 1.3rem;
+.leaderboard-container {
+  margin: 10px;
 }
 
-.modal-link {
-  cursor: pointer;
+.leaderboard-container table th,
+.leaderboard-container table td {
+  max-width: 50px; /* Adjust the width as per your requirement */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table {
+  --bs-table-bg: #fff0;
+  border: rgba(61, 58, 58, 0.44) thin solid;
+  min-width: 100%;
+  max-width: 100px;
+
+  .bg-gold {
+    background: linear-gradient(to bottom, #fffde5, #ffe86a, #fffde5);
+    border-radius: 5px;
+  }
+
+  .bg-silver {
+    background: linear-gradient(to bottom, #c0c0c0, #d3d3d3, #c0c0c0);
+    border-radius: 5px;
+  }
+
+  .bg-bronze {
+    background: linear-gradient(to bottom, #d2b48c, #b87333, #d2b48c);
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 576px) {
+  .table {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .table {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .table {
+    font-size: 16px;
+
+  }
 }
