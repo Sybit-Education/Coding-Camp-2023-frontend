@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import { SyGotchi } from '../entities/syGotchi';
 import { ActionsService } from '../services/actions.service';
 import { Store } from '@ngrx/store';
@@ -26,6 +26,7 @@ export class GymFunctionComponent implements OnInit {
           if(syGotchi) {
             this.isTired = syGotchi.tired
             this.isBored = syGotchi.bored
+            this.cooldown = syGotchi.playCooldown
             this.sygotchi = syGotchi
           }
         }
@@ -33,16 +34,28 @@ export class GymFunctionComponent implements OnInit {
   }
   train(){
     if(this.isTired >= 50 ){
-      this.actionsService.playWithSygotchi()
-      .subscribe
-      (res => {
-        this.message.text = 'Sygotchi hat erfolgreich trainiert!'
-        this.messageHandler()
-        this.store.dispatch(setSygotchi({sygotchi: res as SyGotchi}))
-      },
-      () => {
+      if(this.cooldown > -1){
         this.message.error = true
-        this.message.text = 'Dein Sygotchi kann nicht mehr trainieren.'
+        this.message.text = 'Du musst ' + this.cooldown + ' Minuten warten bis dein SyGotchi wieder trainieren kann'
+        this.messageHandler()
+      }else{
+        this.actionsService.playWithSygotchi()
+        .subscribe
+        (res => {
+          this.message.text = 'Sygotchi hat erfolgreich trainiert!'
+          this.messageHandler()
+          this.store.dispatch(setSygotchi({sygotchi: res as SyGotchi}))
+        },
+        () => {
+          this.message.error = true
+          this.message.text = 'Dein Sygotchi kann nicht mehr trainieren.'
+          this.messageHandler()
+        })
+      }
+
+    }else{
+      this.message.error = true
+        this.message.text = 'Dein Sygotchi ist zu müde und kann nicht mehr trainieren.'
         this.messageHandler()
       })
     }
