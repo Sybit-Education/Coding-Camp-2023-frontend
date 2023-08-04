@@ -144,7 +144,7 @@ export class SygotchiErstellenComponent implements OnInit{
       this.store.dispatch(setSygotchi({sygotchi: result as any}))
       this.wsService.initializeWebSocketConnection(result.id)
 
-      this.router.navigate(['/sleep']);
+      this.router.navigate(['/bedroom']);
     })
   }
 }

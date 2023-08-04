@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-  constructor(public route: Router){}
+  constructor(public route: Router, public authService: AuthService){}
 
   checkLogin(){
     if(localStorage.token){
-      this.route.navigate(['/sleep'])
+      this.route.navigate(['/bedroom'])
     }else{
       this.route.navigate(['/auth'])
     }
