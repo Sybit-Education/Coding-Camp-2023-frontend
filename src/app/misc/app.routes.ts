@@ -5,7 +5,7 @@ import { SygotchiErstellenComponent } from "../sygotchi-erstellen/sygotchi-erste
 import { TeamSComponent } from "../team-s/team-s.component";
 import { DsgvoPageComponent } from "../dsgvo-page/dsgvo-page.component";
 import { ImpressumComponent } from "../impressum/impressum.component";
-import { SygotchiCleanComponent } from "../sygotchi-clean/sygotchi-clean.component";
+import { SygotchiCleanComponent } from "../clean-scene/sygotchi-clean.component";
 import { HowToPlayComponent } from "../how-to-play/how-to-play.component";
 import { KitchenComponent } from "../kitchen/kitchen.component";
 import { ErrorPageComponent } from "../error-page/error-page.component";
