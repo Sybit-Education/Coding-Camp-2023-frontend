@@ -1,9 +1,8 @@
-<div class="message">
-  <div *ngIf="showMessage">
-  <span class="message"> {{message.text}} </span>
-  </div>
-</div>
-<button (click)="onSleep()" class="btn btn-primary w-100">
+<ngb-alert *ngIf="showMessage" [dismissible]="false">
+  {{message.text}}
+</ngb-alert>
+
+<button class="btn btn-primary w-100" type="button" (click)="onSleep()">
   <div *ngIf="isAsleep;else goSleep">
     <span>
       <i class="fa-solid fa-bed"></i>
@@ -13,6 +12,7 @@
   <ng-template #goSleep>
     <span>
       <i class="fa-solid fa-bed"></i>
-      Schlafen</span>
+      Schlafen
+    </span>
   </ng-template>
 </button>

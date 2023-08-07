@@ -58,7 +58,7 @@ export class ShowSygotchiComponent implements AfterViewInit {
     })
 
     this.paperScope.view.onFrame = (event: any) => {
-      this.onAnimate();
+      this.onAnimate(event);
     };
   }
   buildSygotchi() {
@@ -219,7 +219,27 @@ export class ShowSygotchiComponent implements AfterViewInit {
         break;
 
       case Mood.THIRSTY:
+      let mouthShape = new this.paperScope.Path.Arc(
+        new this.paperScope.Point(width - 30, height * 0.8 ),
+        new this.paperScope.Point(width, (height * 0.8 ) - 0),
+        new this.paperScope.Point(width + 30, height * 0.8 )
+      );
+      mouthShape.strokeColor = new this.paperScope.Color('black');
+      mouthShape.strokeWidth = 2;
 
+      // Zeichnen der Zunge
+      let tongue = new this.paperScope.Path();
+      tongue.moveTo(new this.paperScope.Point(width - 15, (height * 0.8 )));
+      tongue.lineTo(new this.paperScope.Point(width - 15,(height * 0.8 )+10));
+      tongue.arcTo(new this.paperScope.Point(width-15, (height * 0.8 ) +15), new this.paperScope.Point(width + 15, (height * 0.8 ) +15 ));
+      tongue.lineTo(new this.paperScope.Point(width + 15, (height * 0.8 )));
+      tongue.closePath();
+      tongue.fillColor = new this.paperScope.Color('red');
+
+      this.mouth = new this.paperScope.Group({
+        children: [mouthShape, tongue]
+      })
+      break;
         break;
 
       case Mood.TIRED:
@@ -243,23 +263,22 @@ export class ShowSygotchiComponent implements AfterViewInit {
     }
   }
 
-  onAnimate() {
-    if(this.eyeLeft && this.eyeRight && !this.sygotchi.sleeping) {
-      this.eyeLeft.scale(this.blinkScales[this.animationFrame]);
-      this.eyeRight.scale(this.blinkScales[this.animationFrame]);
-      this.eyeSleepingLeft.visible = false;
-      this.eyeSleepingRight.visible = false;
-      this.animationFrame++;
-      if (this.animationFrame >= this.blinkScales.length) {
-        this.animationFrame = 0;
-      }
-    } else if(this.eyeLeft && this.eyeRight && this.sygotchi.sleeping) {
-      this.eyeLeft.visible = false;
-      this.eyeRight.visible = false;
-      this.eyeSleepingLeft.visible = true;
-      this.eyeSleepingRight.visible = true;
-    }
+  onAnimate(event: any) {
+    if(this.sygotchi) {
+      this.eyeSleepingLeft.visible = this.sygotchi.sleeping;
+      this.eyeSleepingRight.visible = this.sygotchi.sleeping;
+      this.eyeLeft.visible = !this.sygotchi.sleeping;
+      this.eyeRight.visible = !this.sygotchi.sleeping;
 
+      if(this.eyeLeft && this.eyeRight && !this.sygotchi.sleeping) {
+        this.eyeLeft.scale(this.blinkScales[this.animationFrame]);
+        this.eyeRight.scale(this.blinkScales[this.animationFrame]);
+        this.animationFrame++;
+        if (this.animationFrame >= this.blinkScales.length) {
+          this.animationFrame = 0;
+        }
+      }
+    }
   }
 
   onMouseMove(e) {

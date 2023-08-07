@@ -1,9 +1,7 @@
-<div class="message">
-    <div *ngIf="showMessage">
-    <span class="message"> {{message.text}} </span>
-    </div>
-</div>
-<button class="btn btn-primary w-100" (click)="train()">
+<ngb-alert *ngIf="showMessage" [dismissible]="false">
+  {{message.text}}
+</ngb-alert>
+<button class="btn btn-primary w-100" type="button" (click)="train()">
     <i class="fa-solid fa-heart"></i>
     Trainieren
 </button>
