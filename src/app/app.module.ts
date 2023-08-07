@@ -20,7 +20,7 @@ import { ShowSygotchiComponent } from './show-sygotchi/show-sygotchi.component';
 import { SygotchiErstellenComponent } from './sygotchi-erstellen/sygotchi-erstellen.component';
 import { HeaderComponent } from './header/header.component';
 import { SygotchiCleanComponent } from './clean-scene/sygotchi-clean.component';
-import { SleepSceneComponent } from './sleep-scene/sleep-scene.component';
+import { SleepFunctionComponent } from './sleep-function/sleep-function.component';
 import { KitchenComponent } from './kitchen/kitchen.component';
 import { FooterComponent } from './footer/footer.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
@@ -29,7 +29,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { CleanFunctionComponent } from './clean-function/clean-function.component';
 import { KitchenFunctionComponent } from './kitchen-function/kitchen-function.component';
-import { BedroomComponent } from './bedroom/bedroom.component';
+import { BedroomSceneComponent } from './bedroom-scene/bedroom-scene.component';
 import { GymComponent } from './gym/gym.component';
 import { GymFunctionComponent } from './gym-function/gym-function.component';
 
@@ -44,14 +44,14 @@ import { GymFunctionComponent } from './gym-function/gym-function.component';
     ShowSygotchiComponent,
     SygotchiErstellenComponent,
     HeaderComponent,
-    SleepSceneComponent,
+    SleepFunctionComponent,
     NeedsComponent,
     KitchenComponent,
     SygotchiCleanComponent,
     FooterComponent,
     CleanFunctionComponent,
     KitchenFunctionComponent,
-    BedroomComponent,
+    BedroomSceneComponent,
     HowToPlayComponent,
     LeaderboardComponent,
     LeaderboardComponent,

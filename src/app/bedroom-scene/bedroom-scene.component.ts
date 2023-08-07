@@ -4,11 +4,11 @@ import { Store } from '@ngrx/store';
 import { selectSygotchi } from '../store/sygotchi.selectors';
 
 @Component({
-  selector: 'app-bedroom',
-  templateUrl: './bedroom.component.html',
-  styleUrls: ['./bedroom.component.scss']
+  selector: 'app-bedroom-scene',
+  templateUrl: './bedroom-scene.component.html',
+  styleUrls: ['./bedroom-scene.component.scss']
 })
-export class BedroomComponent implements OnInit{
+export class BedroomSceneComponent implements OnInit{
   isAsleep: boolean;
   constructor(public router:Router, public store:Store){}
   ngOnInit(): void {
