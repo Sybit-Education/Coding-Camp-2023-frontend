@@ -67,7 +67,6 @@ export class SleepFunctionComponent implements OnInit {
   messageHandler() {
     if(!this.showMessage){
       this.showMessage = true
-      console.log(this.showMessage)
       setTimeout(() => {
         this.showMessage = false
       }, 7000)
