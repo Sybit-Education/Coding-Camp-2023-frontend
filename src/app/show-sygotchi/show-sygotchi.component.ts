@@ -215,31 +215,64 @@ export class ShowSygotchiComponent implements AfterViewInit {
         break;
 
       case Mood.HUNGRY:
+        {
+          // Zeichnen des Oberkiefers
+          let upperLip = new this.paperScope.Path.Arc(
+            new this.paperScope.Point(width - 30, height * 0.8),
+            new this.paperScope.Point(width, (height * 0.8) - 20),
+            new this.paperScope.Point(width + 30, height * 0.8)
+          );
+          upperLip.strokeColor =  new this.paperScope.Color('black');
+          upperLip.strokeWidth = 5;
 
+          // Zeichnen des Unterkiefers
+          let lowerLip = new this.paperScope.Path.Arc(
+            new this.paperScope.Point(width - 30, height * 0.8),
+            new this.paperScope.Point(width, (height * 0.8) + 15),
+            new this.paperScope.Point(width + 30, height * 0.8)
+          );
+          lowerLip.strokeColor =  new this.paperScope.Color('black');
+          lowerLip.strokeWidth = 5;
+
+          // Zeichnen der Zunge
+          let tongue = new this.paperScope.Path.Ellipse({
+              from: [width - 20, (height * 0.8) - 10],
+              to: [width + 20, (height * 0.8) + 15],
+              fillColor: 'red',
+              strokeColor: 'black'
+          });
+
+          this.mouth = new this.paperScope.Group({
+            children: [upperLip, lowerLip, tongue]
+          })
+        }
         break;
 
       case Mood.THIRSTY:
-      let mouthShape = new this.paperScope.Path.Arc(
-        new this.paperScope.Point(width - 30, height * 0.8 ),
-        new this.paperScope.Point(width, (height * 0.8 ) - 0),
-        new this.paperScope.Point(width + 30, height * 0.8 )
-      );
-      mouthShape.strokeColor = new this.paperScope.Color('black');
-      mouthShape.strokeWidth = 2;
+        {
+          let mouthShape = new this.paperScope.Path.Arc(
+            new this.paperScope.Point(width - 30, height * 0.8 ),
+            new this.paperScope.Point(width, (height * 0.8 ) - 0),
+            new this.paperScope.Point(width + 30, height * 0.8 )
+          );
+          mouthShape.strokeColor = new this.paperScope.Color('black');
+          mouthShape.strokeWidth = 2;
 
-      // Zeichnen der Zunge
-      let tongue = new this.paperScope.Path();
-      tongue.moveTo(new this.paperScope.Point(width - 15, (height * 0.8 )));
-      tongue.lineTo(new this.paperScope.Point(width - 15,(height * 0.8 )+10));
-      tongue.arcTo(new this.paperScope.Point(width-15, (height * 0.8 ) +15), new this.paperScope.Point(width + 15, (height * 0.8 ) +15 ));
-      tongue.lineTo(new this.paperScope.Point(width + 15, (height * 0.8 )));
-      tongue.closePath();
-      tongue.fillColor = new this.paperScope.Color('red');
+          // Zeichnen der Zunge
+          let tongue = new this.paperScope.Path();
+          tongue.moveTo(new this.paperScope.Point(width - 15, (height * 0.8 )));
+          tongue.lineTo(new this.paperScope.Point(width - 15,(height * 0.8 )+10));
+          tongue.arcTo(new this.paperScope.Point(width-15, (height * 0.8 ) +15), new this.paperScope.Point(width + 15, (height * 0.8 ) +15 ));
+          tongue.lineTo(new this.paperScope.Point(width + 15, (height * 0.8 )));
+          tongue.closePath();
+          tongue.fillColor = new this.paperScope.Color('red');
+          tongue.strokeColor = new this.paperScope.Color('black');
+          tongue.strokeWidth = 1;
 
-      this.mouth = new this.paperScope.Group({
-        children: [mouthShape, tongue]
-      })
-      break;
+          this.mouth = new this.paperScope.Group({
+            children: [mouthShape, tongue]
+          })
+        }
         break;
 
       case Mood.TIRED:
@@ -279,6 +312,7 @@ export class ShowSygotchiComponent implements AfterViewInit {
         }
       }
     }
+    this.paperScope.view.update();
   }
 
   onMouseMove(e) {
