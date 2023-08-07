@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { SyGotchi } from '../entities/syGotchi';
 import { ActionsService } from '../services/actions.service';
 import { Store } from '@ngrx/store';
@@ -10,13 +10,13 @@ import { setSygotchi } from '../store/sygotchi.actions';
   templateUrl: './gym-function.component.html',
   styleUrls: ['./gym-function.component.scss']
 })
-export class GymFunctionComponent {
+export class GymFunctionComponent implements OnInit {
   isTired: number = 0
   isBored: number
-  cooldown: number
   message = {text: '', error: false}
   sygotchi: SyGotchi
   showMessage: boolean = false
+  cooldown: number
 
   constructor(private actionsService: ActionsService, private store: Store) {}
 
@@ -24,10 +24,12 @@ export class GymFunctionComponent {
     this.store.select(selectSygotchi)
       .subscribe(
         syGotchi => {
-          this.isTired = syGotchi.tired
-          this.isBored = syGotchi.bored
-          this.cooldown = syGotchi.playCooldown
-          this.sygotchi = syGotchi
+          if(syGotchi) {
+            this.isTired = syGotchi.tired
+            this.isBored = syGotchi.bored
+            this.cooldown = syGotchi.playCooldown
+            this.sygotchi = syGotchi
+          }
         }
       )
   }
@@ -51,13 +53,13 @@ export class GymFunctionComponent {
           this.messageHandler()
         })
       }
-      
+
     }else{
       this.message.error = true
         this.message.text = 'Dein Sygotchi ist zu müde und kann nicht mehr trainieren.'
         this.messageHandler()
+      }
     }
-  }
 
   messageHandler() {
     this.showMessage = true

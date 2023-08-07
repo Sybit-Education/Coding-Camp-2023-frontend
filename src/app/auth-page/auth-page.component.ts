@@ -23,7 +23,7 @@ export class AuthPageComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private store: Store, private wsService: WebsocketService, private actionsService: ActionsService) {}
 
   ngOnInit() {
-    localStorage.clear()
+    sessionStorage.clear()
     this.authForm = this.fb.group({
       username: ["", Validators.required],
       password: ["", Validators.required]
@@ -46,8 +46,8 @@ export class AuthPageComponent implements OnInit {
     } else {
       this.authService.register(this.authForm.value.username, this.authForm.value.password).subscribe(
         result => {
-          localStorage.setItem('token', result["token"])
-          localStorage.setItem('id', result["id"])
+          sessionStorage.setItem('token', result["token"])
+          sessionStorage.setItem('id', result["id"])
           alert('Sie haben sich erfolgreich registriert!')
           this.router.navigate(['/create']);
         },
@@ -69,8 +69,8 @@ export class AuthPageComponent implements OnInit {
     this.authService.login(this.authForm.value.username, this.authForm.value.password)
     .subscribe(
       result => {
-        localStorage.setItem('token', result["token"])
-        localStorage.setItem('id', result["id"])
+        sessionStorage.setItem('token', result["token"])
+        sessionStorage.setItem('id', result["id"])
 
           this.actionsService.getSygotchi().subscribe(result => {
             this.store.dispatch(setSygotchi({sygotchi: result as SyGotchi}))

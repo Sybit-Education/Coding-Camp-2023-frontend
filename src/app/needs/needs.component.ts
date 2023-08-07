@@ -38,10 +38,6 @@ export class NeedsComponent {
     })
   }
 
-  open(content) {
-    this.modalService.open(content)
-  }
-
   private moodIconSelector(mood: string) {
     switch (mood) {
       case Mood.HAPPY:

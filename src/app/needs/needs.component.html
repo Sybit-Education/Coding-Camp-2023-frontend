@@ -1,5 +1,8 @@
 <div class="center">
   <div class="row w-100">
+    <div class="text-center h3" *ngIf="sygotchi">
+      <a>{{sygotchi.name}}</a>
+    </div>
     <div class="col-6 mb-3">
       <div class="row align-items-center" *ngFor="let need of needsLeft">
         <div class="col-2 text-center">
@@ -29,6 +32,13 @@
           <span *ngIf="sygotchi">
             {{ sygotchi.rank + 1 }}
             <i class="fa-solid fa-trophy"></i>
+          </span>
+        </label>
+        <br>
+        <label>Score:
+          <span *ngIf="sygotchi">
+            {{ sygotchi.score}}
+            <i class="fa-solid fa-bank"></i>
           </span>
         </label>
       </div>

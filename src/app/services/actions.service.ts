@@ -13,7 +13,7 @@ export class ActionsService {
   constructor(private http: HttpClient) {}
 
   getAccountInfo() {
-    const id = localStorage.getItem('id')
+    const id = sessionStorage.getItem('id')
 
     return this.http.get(`${this.apiUrl}/user/${id}`)
   }

@@ -20,8 +20,10 @@ export class CleanFunctionComponent implements OnInit {
 
   ngOnInit(): void {
       this.store.select(selectSygotchi).subscribe(SyGotchi => {
-        this.isDirty = SyGotchi.dirty
-        this.sygotchi = SyGotchi
+        if(SyGotchi) {
+          this.isDirty = SyGotchi.dirty
+          this.sygotchi = SyGotchi
+        }
       })
   }
   clean(){
@@ -34,20 +36,19 @@ export class CleanFunctionComponent implements OnInit {
       () => {
         this.message.Error = true
         this.message.text = "Sygotchi ist nicht dreckig genug!"
-        this.messageHandler()      
+        this.messageHandler()
       }
 
       )
     }else{
       this.message.Error = true
         this.message.text = "Sygotchi ist nicht dreckig genug!"
-        this.messageHandler()  
+        this.messageHandler()
     }
   }
   messageHandler() {
     if(!this.showMessage){
       this.showMessage = true
-      console.log(this.showMessage)
       setTimeout(() => {
         this.showMessage = false
       }, 7000)
