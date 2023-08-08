@@ -41,7 +41,6 @@ export class KitchenFunctionComponent implements OnInit{
       if(this.feedCooldown > -1){
         this.message.error = true
         this.message.text = 'Du musst ' + this.feedCooldown + ' Minuten warten bis dein SyGotchi wieder essen kann'
-        console.log(this.message.text)
         this.messageHandler()
       }else{
         this.actionsService.feedSygotchi()
@@ -94,7 +93,6 @@ export class KitchenFunctionComponent implements OnInit{
   messageHandler() {
     if(!this.showMessage){
       this.showMessage = true
-      console.log(this.showMessage)
       setTimeout(() => {
         this.showMessage = false
       }, 7000)

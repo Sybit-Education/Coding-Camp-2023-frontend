@@ -3,8 +3,8 @@
     <div class="text-center h3" *ngIf="sygotchi">
       <a>{{sygotchi.name}}</a>
     </div>
-    <div class="col-6 mb-3">
-      <div class="row align-items-center" *ngFor="let need of needsLeft">
+    <div class="col-6">
+      <div class="row align-items-center mb-2" *ngFor="let need of needsLeft">
         <div class="col-2 text-center">
           <i *ngIf="need.icon" [ngClass]="need.icon"></i>
         </div>
@@ -22,25 +22,16 @@
         </div>
       </div>
     </div>
-    <div class="col-6 mb-3">
-      <div class="flex">
-        <label>Stimmung:
-          <i class="fa-regular fa-lg" [ngClass]="mood"></i>
-        </label>
-        <br>
-        <label>Rang:
-          <span *ngIf="sygotchi">
-            {{ sygotchi.rank + 1 }}
-            <i class="fa-solid fa-trophy"></i>
-          </span>
-        </label>
-        <br>
-        <label>Score:
-          <span *ngIf="sygotchi">
-            {{ sygotchi.score}}
-            <i class="fa-solid fa-bank"></i>
-          </span>
-        </label>
+    <div class="col-6">
+      <div class="row" *ngIf="mood">
+        <label class="col-8 mb-3"><i class="fa-regular fa-smile"></i> Stimmung:</label>
+        <span class="col-4 text-end"><i class="fa-regular fa-lg" [ngClass]="mood"></i></span>
+
+        <label class="col-8 mb-3"><i class="fa-solid fa-trophy"></i> Rang:</label>
+        <span  class="col-4 text-end" *ngIf="sygotchi"> {{ sygotchi.rank }}</span>
+
+        <label class="col-8 mb-3"><i class="fa-solid fa-bank"></i> Score:</label>
+        <span class="col-4 text-end" *ngIf="sygotchi">{{ sygotchi.score}}</span>
       </div>
     </div>
   </div>

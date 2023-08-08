@@ -6,11 +6,11 @@ import {setSygotchi} from "../store/sygotchi.actions";
 import {selectSygotchi} from "../store/sygotchi.selectors";
 
 @Component({
-  selector: 'app-sleep-scene',
-  templateUrl: './sleep-scene.component.html',
-  styleUrls: ['./sleep-scene.component.scss']
+  selector: 'app-sleep-function',
+  templateUrl: './sleep-function.component.html',
+  styleUrls: ['./sleep-function.component.scss']
 })
-export class SleepSceneComponent implements OnInit {
+export class SleepFunctionComponent implements OnInit {
   isAsleep: boolean = false
   message = {text: '', error: false}
   sygotchi: SyGotchi
@@ -67,7 +67,6 @@ export class SleepSceneComponent implements OnInit {
   messageHandler() {
     if(!this.showMessage){
       this.showMessage = true
-      console.log(this.showMessage)
       setTimeout(() => {
         this.showMessage = false
       }, 7000)
